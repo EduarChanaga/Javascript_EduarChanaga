@@ -1,74 +1,233 @@
-let campers = []; // Ahora campers es un array
-dato=true;
-while (dato==true) {
-    let tipo_de_usuario = parseInt(prompt("¿A qué módulo desea ingresar?\n1. Camper\n2. Trainer\n3. Coordinación\n4. Reportes\n5. Cerrar"));
+let camper = []; // Array para almacenar los estudiantes
 
-    if (tipo_de_usuario === 1) {
-        let pree_registro = parseInt(prompt("¿Desea realizar el Pre-Registro a campus?\n1. Sí\n2. No"));
+/**
+ * Función para agregar un estudiante al JSON y guardar en localStorage.
+ */
+function agregarCamper() {
+    // Obtener los datos del formulario
+    let id = document.getElementById("id").value;
+    let nombres = document.getElementById("nombres").value;
+    let apellidos = document.getElementById("apellidos").value;
+    let direccion = document.getElementById("direccion").value;
+    let acudiente = document.getElementById("acudiente").value;
+    let celular = document.getElementById("celular").value;
+    let fijo = document.getElementById("fijo").value;
 
-        if (pree_registro === 1) {
-            console.log("Pre-Registro a Campus");
-
-            let nuevo_dato = {
-                "n_identificacion": prompt("Número de identificación: "),
-                "Nombre": prompt("Nombre completo: "),
-                "Direccion": prompt("Dirección: "),
-                "Acudiente": prompt("Nombre acudiente: "),
-                "Celular": prompt("Número celular: "),
-                "Fijo": prompt("Número fijo: "),
-                "Estado": "proceso_de_inscripcion",
-                "Riesgo": ""
-            };
-            
-            // Agregar el nuevo dato al array campers
-            campers.push(nuevo_dato);
-            console.log("Datos del camper almacenados correctamente.");
-            
-            // Mostrar los datos en la consola
-            console.log("Datos del camper:", nuevo_dato);
-            
-            // Guardar campers en el almacenamiento local del navegador como un string
-            localStorage.setItem('campers', JSON.stringify(campers));
-            console.log("Datos guardados en el almacenamiento local del navegador");
-        } else {
-            console.log("Volviendo al inicio");
+    // Crear el objeto del estudiante
+    let student = {
+        "id": id,
+        "nombres": nombres,
+        "apellidos": apellidos,
+        "direccion": direccion,
+        "acudiente": acudiente,
+        "celular": celular,
+        "fijo": fijo,
+        "Estado": "Inscrito",
+        "Grupo": "",
+        "modulos": {
+            "Fundamentos de programacion": 0,
+            "programacion web": 0,
+            "programacion formal": 0,
+            "bases de datos": 0,
+            "backend": 0
         }
     };
 
-    if (tipo_de_usuario === 2) {
-        console.log("Trainer");
-        let trainer_opciones = parseInt(prompt("¿Qué desea realizar?\n1. Ver grupos según entrenador asignado\n2. Ingresar notas de campers\n3. Salir"));
-        if (trainer_opciones === 1) {
+    // Agregar el estudiante al array
+    camper.push(student);
 
-        }
+    // Guardar en localStorage
+    localStorage.setItem("inscritos", JSON.stringify(camper));
 
-        if (trainer_opciones === 2) {
-            let notacamper = prompt("Ingresar notas de campers");
-        }
+    // Mostrar los estudiantes agregados en el JSON
+    let jsonDisplay = document.getElementById("jsonDisplay");
+    jsonDisplay.innerHTML = JSON.stringify(camper, null, 2); // Mostrar JSON formateado con espacios de indentación
 
-        if (trainer_opciones === 3) {
-            dato = false;
-        }
+    // Limpiar el formulario después de agregar un estudiante
+    document.getElementById("studentForm").reset();
+}
+
+/**
+ * Función para cambiar el estado de un camper a "Cursando".
+ */
+function cambiarACamper() {
+    // Obtener el ID del camper a cambiar
+    let idCambiar = document.getElementById("idMatricular").value;
+
+    // Buscar el camper en el array y cambiar su estado a "Cursando"
+    let index = camper.findIndex(student => student.id === idCambiar);
+    if (index !== -1) {
+        camper[index].Estado = "Cursando"; // Cambiar el estado del camper
+        localStorage.setItem("inscritos", JSON.stringify(camper)); // Actualizar localStorage
+
+        // Mostrar los campers y estudiantes actualizados en el JSON
+        let jsonDisplay = document.getElementById("jsonDisplay");
+        jsonDisplay.innerHTML = JSON.stringify(camper, null, 2);
+
+        // Limpiar el campo de ID para cambiar a camper
+        document.getElementById("idMatricular").value = "";
+    } else {
+        alert("No se encontró ningún estudiante con la ID especificada.");
+    }
+}
+
+/**
+ * Función para cambiar el estado de un camper a "Graduado".
+ */
+function cambiarAGraduado() {
+    // Obtener el ID del camper a graduar
+    let idCambiar = document.getElementById("idGraduar").value;
+
+    // Buscar el camper en el array y cambiar su estado a "Graduado"
+    let index = camper.findIndex(student => student.id === idCambiar);
+    if (index !== -1) {
+        camper[index].Estado = "Graduado"; // Cambiar el estado del camper a "Graduado"
+        localStorage.setItem("inscritos", JSON.stringify(camper)); // Actualizar localStorage
+
+        // Mostrar los campers y estudiantes actualizados en el JSON
+        let jsonDisplay = document.getElementById("jsonDisplay");
+        jsonDisplay.innerHTML = JSON.stringify(camper, null, 2);
+
+        // Limpiar el campo de ID para cambiar a camper
+        document.getElementById("idGraduar").value = "";
+    } else {
+        alert("No se encontró ningún estudiante con la ID especificada.");
+    }
+}
+
+/**
+ * Función para eliminar un estudiante inscrito.
+ */
+function eliminarInscrito() {
+    // Obtener el ID del estudiante a eliminar
+    let idEliminar = document.getElementById("idEliminar").value;
+
+    // Buscar el estudiante en el array y eliminarlo si existe
+    let index = camper.findIndex(student => student.id === idEliminar);
+    if (index !== -1) {
+        camper.splice(index, 1); // Eliminar el estudiante del array
+        localStorage.setItem("inscritos", JSON.stringify(camper)); // Actualizar localStorage
+
+        // Mostrar los estudiantes actualizados en el JSON
+        let jsonDisplay = document.getElementById("jsonDisplay");
+        jsonDisplay.innerHTML = JSON.stringify(camper, null, 2);
+
+        // Limpiar el campo de ID para eliminar
+        document.getElementById("idEliminar").value = "";
+    } else {
+        alert("No se encontró ningún estudiante con la ID especificada.");
+    }
+}
+
+/**
+ * Función para cambiar el grupo de un estudiante.
+ */
+function cambiarGrupo() {
+    // Obtener el ID del estudiante a cambiar
+    let idCambiar = document.getElementById("idCambiar").value;
+    let nuevoGrupo = document.getElementById("nuevoGrupo").value;
+
+    // Verificar que el nuevo grupo sea uno de los grupos válidos
+    let gruposValidos = ["p1", "p2", "j1", "j2", "m1", "m2"];
+    if (!gruposValidos.includes(nuevoGrupo)) {
+        alert("El grupo ingresado no es válido. Los grupos válidos son: p1, p2, j1, j2, m1, m2.");
+        return;
     }
 
-    if (tipo_de_usuario === 3) {
-        let cordinador_opciones = prompt(" ¿Que desea realizar?\n 1. Ver opciones sobre los campers\n 2. Ver opciones sobre los trainers\n 3. Grupos (creación, vista...)\n 4. Salir");
-        if (cordinador_opciones === 1) {
-            let opcion = prompt("1. Inscripción (Autorizar campers para realizar la prueba de ingreso)\n2. Ingresar la nota de los campers que se han registrado\n3. Matriculas (Asignar grupo a camper Aprobado)\n4. Graduar campers (comprueba que todos los módulos fueron realizados)\n5. Expulsar campers\n6. Modificar nota de módulo de camper\n7. Salir");
-        }
+    // Buscar el camper en el array y cambiar su grupo
+    let index = camper.findIndex(student => student.id === idCambiar);
+    if (index !== -1) {
+        camper[index].Grupo = nuevoGrupo; // Cambiar el grupo del camper
+        localStorage.setItem("inscritos", JSON.stringify(camper)); // Actualizar localStorage
 
-        if (cordinador_opciones === 2) {
-            let opcion = prompt("1. Ingreso de trainer\n2. Ver rutas según trainers\n3. Ver información de trainer\n4. Salir");
-        }
-        if (cordinador_opciones === 3) {
-            let opcion = prompt("1. Crear grupo\n2. Ver grupos\n3. Modificar grupo\n4. Eliminar grupo\n5. Salir");
-        }
-    };
+        // Mostrar los campers y estudiantes actualizados en el JSON
+        let jsonDisplay = document.getElementById("jsonDisplay");
+        jsonDisplay.innerHTML = JSON.stringify(camper, null, 2);
 
-    if (tipo_de_usuario === 4) {
-        let reporte_opciones = prompt("1. Listar los campers que se encuentren en estado de inscrito.\n2. Listar los campers que aprobaron el examen inicial.\n3. Listar los entrenadores que se encuentran trabajando con CampusLands.\n4. Listar los campers que cuentan con bajo rendimiento.\n5. Listar los campers y trainers que se encuentren asociados a una ruta de entrenamiento.\n6. Mostrar cuantos campers perdieron y aprobaron cada uno de los módulos teniendo en cuenta la ruta de entrenamiento y el entrenador encargado.\n7. Salir");
-    };
-    if (tipo_de_usuario === 5) {
-        dato = false;
-    };
+        // Limpiar los campos de ID y nuevo grupo
+        document.getElementById("idCambiar").value = "";
+        document.getElementById("nuevoGrupo").value = "";
+    } else {
+        alert("No se encontró ningún estudiante con la ID especificada.");
+    }
+}
+
+/**
+ * Función para modificar la nota de un módulo de un estudiante.
+ */
+function modificarModulo() {
+    // Obtener el ID del estudiante a modificar y la nueva nota del módulo
+    let idModificar = document.getElementById("idModificar").value;
+    let modulo = document.getElementById("modulo").value;
+    let nuevaNota = parseInt(document.getElementById("nuevaNota").value); // Capturar nueva nota como entero
+
+    // Verificar si la nueva nota es válida (entre 0 y 100)
+    if (isNaN(nuevaNota) || nuevaNota < 0 || nuevaNota > 100) {
+        alert("Ingrese una nota válida entre 0 y 100.");
+        return;
+    }
+
+    // Buscar el estudiante en el array y modificar la nota del módulo
+    let index = camper.findIndex(student => student.id === idModificar);
+    if (index !== -1) {
+        camper[index].modulos[modulo] = nuevaNota; // Cambiar la nota del módulo
+        localStorage.setItem("inscritos", JSON.stringify(camper)); // Actualizar localStorage
+
+        // Mostrar los estudiantes actualizados en el JSON
+        let jsonDisplay = document.getElementById("jsonDisplay");
+        jsonDisplay.innerHTML = JSON.stringify(camper, null, 2);
+
+        // Limpiar los campos para modificar módulo
+        document.getElementById("idModificar").value = "";
+        document.getElementById("modulo").value = "";
+        document.getElementById("nuevaNota").value = "";
+    } else {
+        alert("No se encontró ningún estudiante con la ID especificada.");
+    }
+}
+
+/**
+ * Función para cargar los estudiantes desde localStorage al cargar la página.
+ */
+window.onload = function() {
+    let storedcamper = localStorage.getItem("inscritos");
+    if (storedcamper) {
+        camper = JSON.parse(storedcamper);
+        let jsonDisplay = document.getElementById("jsonDisplay");
+        jsonDisplay.innerHTML = JSON.stringify(camper, null, 2);
+    } else {
+        document.getElementById("campers").textContent = "No hay campers inscritos.";
+    }
+};
+
+
+
+
+
+
+/**
+ * Función para mostrar la sección de Campers y ocultar las secciones de Trainers y Coordinación.
+ */
+function mostrarCampers() {
+    document.getElementById('campersSection').style.display = 'block';
+    document.getElementById('trainersSection').style.display = 'none';
+    document.getElementById('coordinacionSection').style.display = 'none';
+}
+
+/**
+ * Función para mostrar la sección de Trainers y ocultar las secciones de Campers y Coordinación.
+ */
+function mostrarTrainers() {
+    document.getElementById('campersSection').style.display = 'none';
+    document.getElementById('trainersSection').style.display = 'block';
+    document.getElementById('coordinacionSection').style.display = 'none';
+}
+
+/**
+ * Función para mostrar la sección de Coordinación y ocultar las secciones de Campers y Trainers.
+ */
+function mostrarCoordinacion() {
+    document.getElementById('campersSection').style.display = 'none';
+    document.getElementById('trainersSection').style.display = 'none';
+    document.getElementById('coordinacionSection').style.display = 'block';
 }

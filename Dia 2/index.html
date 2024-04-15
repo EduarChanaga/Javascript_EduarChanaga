@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inscribir Campers</title>
+    <link rel="stylesheet" href="/Dia 2/css/style.css">
+</head>
+<body>
+
+    <center><img src="/Dia 2/storage/img/campus.jpg"></center>
+    
+
+<center>
+    <button id="a" type="button" onclick="mostrarCampers()">Campers</button>
+    <button id="a" type="button" onclick="mostrarTrainers()">Trainers</button>
+    <button id="a" type="button" onclick="mostrarCoordinacion()">Coordinación</button>
+</center>
+
+
+    <section id="campersSection">
+        <center><h1>Campers</h1></center>
+        <div class="container">
+            <center><h1>Inscribirse</h1></center>
+            <h3>Formulario de inscripcion a campuslands</h3>
+            <form id="studentForm">
+                <label for="id">Número de Identificación:</label>
+                <input type="text" id="id" name="id" required>
+                
+                <label for="nombres">Nombres:</label>
+                <input type="text" id="nombres" name="nombres" required>
+                
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" name="apellidos" required>
+                
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" name="direccion" required>
+                
+                <label for="acudiente">Acudiente:</label>
+                <input type="text" id="acudiente" name="acudiente" required>
+                
+                <label for="celular">Número de Celular:</label>
+                <input type="tel" id="celular" name="celular" pattern="[0-9]{10}" required>
+                
+                <label for="fijo">Número Fijo:</label>
+                <input type="tel" id="fijo" name="fijo" pattern="[0-9]{7}" required>
+                
+                <button type="button" onclick="agregarCamper()">Inscribirse</button>
+            </form>
+    
+    
+        </div>
+    </section>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    <section id="trainersSection">
+
+        <center><h1>Trainers</h1></center>
+    <div class="container">
+        
+        
+        <h3>Modificar nota de Módulo a campers</h3>
+<label for="idModificar">ID del Estudiante a Modificar:</label>
+<input type="text" id="idModificar" name="idModificar" required>
+
+<label for="modulo">Módulo a Modificar:</label>
+<select id="modulo" name="modulo" required>
+    <option value="Fundamentos de programacion">Fundamentos de programacion</option>
+    <option value="programacion web">programacion web</option>
+    <option value="programacion formal">programacion formal</option>
+    <option value="bases de datos">bases de datos</option>
+    <option value="backend">backend</option>
+</select>
+
+<label for="nuevaNota">Nueva Nota:</label>
+<input type="number" id="nuevaNota" name="nuevaNota" min="0" max="100" required>
+
+<button type="button" onclick="modificarModulo()">Modificar Módulo</button>
+
+
+    </section>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    <section id="coordinacionSection">
+
+        <center><h1>Coordinacion</h1></center>
+        <div class="container">
+            
+                <center><h2>Opciones del camper</h2></center>
+                <h3>Matricular Camper</h3>
+                <label for="idMatricular">ID del Estudiante a Matricular:</label>
+                <input type="text" id="idMatricular" name="idMatricular" required>
+                <button type="button" onclick="cambiarACamper()">Cambiar a Camper</button>
+                
+        
+                <h3>Graduar Camper</h3>
+                <label for="idGraduar">ID del Camper a Graduar:</label>
+                <input type="text" id="idGraduar" name="idGraduar" required>
+                <button type="button" onclick="cambiarAGraduado()">Cambiar a Graduado</button>
+                
+        
+                <h3>Eliminar camper</h3>
+                <label for="idEliminar">ID del Camper a Eliminar:</label>
+                <input type="text" id="idEliminar" name="idEliminar" required>
+                <button type="button" onclick="eliminarInscrito()">Eliminar camper</button>
+            
+    
+    
+                <h3>Cambiar Grupo</h3>
+    <label for="idCambiar">ID del camper a Cambiar:</label>
+    <input type="text" id="idCambiar" name="idCambiar" required>
+    
+    <label for="nuevoGrupo">Nuevo Grupo:</label>
+    <select id="nuevoGrupo" name="nuevoGrupo">
+        <option value="p1">p1</option>
+        <option value="p2">p2</option>
+        <option value="j1">j1</option>
+        <option value="j2">j2</option>
+        <option value="m1">m1</option>
+        <option value="m2">m2</option>
+    </select>
+    
+    <button type="button" onclick="cambiarGrupo()">Cambiar Grupo</button>
+
+    </section>
+
+<div class="container">
+    <h2>Campers</h2>
+    <pre id="jsonDisplay"></pre>
+</div>
+    <script src="/Dia 2/js/script.js"></script>
+</body>
+</html>

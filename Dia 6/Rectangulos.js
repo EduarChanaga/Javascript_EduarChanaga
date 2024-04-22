@@ -50,7 +50,7 @@ function eliminar() {
         // Limpiar el campo de ID para eliminar
         document.getElementById("idEliminar").value = "";
     } else {
-        alert("No se encontró ningún estudiante con la ID especificada.");
+        alert("No se encontró ningún rectangulo con la ID especificada.");
     }
 }
 
@@ -61,6 +61,6 @@ window.onload = function() {
         let jsonDisplay = document.getElementById("jsonDisplay");
         jsonDisplay.innerHTML = JSON.stringify(camper, null, 2);
     } else {
-        document.getElementById("campers").textContent = "No hay campers inscritos.";
+        document.getElementById("campers").textContent = "No hay rectangulos inscritos.";
     }
 };

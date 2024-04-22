@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangulos</title>
+    <link rel="stylesheet" href="/Dia 6/style.css">
+</head>
+<body>
+    <section id="campersSection">
+        <center><h1>Coches</h1></center>
+        <div class="container">  
+            <form id="studentForm">
+                <label for="id">Número id del coche:</label>
+                <input type="text" id="id" name="id" required>
+                
+                <label for="marca">Marca:</label>
+                <input type="text" id="marca" name="marca" required>
+                
+                <label for="modelo">Modelo:</label>
+                <input type="text" id="modelo" name="modelo" required>
+
+                <label for="año">Año:</label>
+                <input type="text" id="año" name="año" required>
+
+                <label for="puertas">Número de puertas:</label>
+                <input type="text" id="puertas" name="puertas" required>
+
+                <center><button type="button" onclick="agregar()">Agregar</button></center>
+            </form>
+        </div>
+    </section>
+
+    <section id="coordinacionSection">
+        <center><h1>Eliminar</h1></center>
+        <div class="container">
+            <label for="idEliminar">ID del coche a Eliminar:</label>
+            <input type="text" id="idEliminar" name="idEliminar" required>
+            <center><button type="button" onclick="eliminar()">Eliminar coche</button></center>
+        </div>
+    </section>
+
+    <div class="container">
+        <h2>Coches</h2>
+        <pre id="jsonDisplay"></pre>
+    </div>
+
+    <script src="coches.js"></script>
+</body>
+</html>

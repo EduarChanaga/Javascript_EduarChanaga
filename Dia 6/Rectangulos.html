@@ -3,27 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personas</title>
+    <title>Rectangulos</title>
     <link rel="stylesheet" href="/Dia 6/style.css">
 </head>
 <body>
     <section id="campersSection">
         <center><a href="/Dia 6/index.html"><button>Volver</button></a></center>
-        <center><h1>Personas</h1></center>
+        <center><h1>Rectangulos</h1></center>
         <div class="container">  
             <form id="studentForm">
-                <label for="id">Número de Identificación:</label>
+                <label for="id">Número id del rectangulo:</label>
                 <input type="text" id="id" name="id" required>
                 
-                <label for="nombres">Nombres:</label>
-                <input type="text" id="nombres" name="nombres" required>
+                <label for="nombres">Base:</label>
+                <input type="text" id="base" name="base" required>
                 
-                <label for="apellidos">Edad:</label>
-                <input type="text" id="edad" name="edad" required>
-                
-                <label for="direccion">Pais:</label>
-                <input type="text" id="pais" name="pais" required>
-                
+                <label for="apellidos">Altura:</label>
+                <input type="text" id="altura" name="altura" required>
 
                 <center><button type="button" onclick="agregar()">Agregar</button></center>
             </form>
@@ -48,18 +44,18 @@
 
         <center><h1>Eliminar</h1></center>
         <div class="container">
-                <label for="idEliminar">ID de la persona a Eliminar:</label>
+                <label for="idEliminar">ID del rectangulo a Eliminar:</label>
                 <input type="text" id="idEliminar" name="idEliminar" required>
-                <center><button type="button" onclick="eliminar()">Eliminar Persona</button></center>
+                <center><button type="button" onclick="eliminar()">Eliminar rectangulo</button></center>
             
     
     </section>
 
 <div class="container">
-    <h2>Personas</h2>
+    <h2>Rectangulos</h2>
     <pre id="jsonDisplay"></pre>
 </div>
 
-<script src="/Dia 6/script.js"></script>
+<script src="/Dia 6/Rectangulos.js"></script>
 </body>
 </html>

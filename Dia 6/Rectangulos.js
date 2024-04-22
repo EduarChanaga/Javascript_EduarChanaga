@@ -6,16 +6,17 @@ let camper = []; // Array para almacenar los estudiantes
 function agregar() {
     // Obtener los datos del formulario
     let id = document.getElementById("id").value;
-    let nombres = document.getElementById("nombres").value;
-    let edad = document.getElementById("edad").value;
-    let pais = document.getElementById("pais").value;
+    let base = document.getElementById("base").value;
+    let altura = document.getElementById("altura").value;
+   
 
     // Crear el objeto del estudiante
     let student = {
         "id": id,
-        "nombres": nombres,
-        "edad": edad,
-        "pais": pais,
+        "Base": base,
+        "Altura": altura,
+        "Area": base * altura,
+        "Perimetro": (base * 2)+(altura*2)
     };
 
     // Agregar el estudiante al array

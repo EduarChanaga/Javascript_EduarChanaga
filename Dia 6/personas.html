@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personas</title>
+    <link rel="stylesheet" href="/Dia 6/style.css">
+</head>
+<body>
+    <section id="campersSection">
+        <center><h1>Personas</h1></center>
+        <div class="container">  
+            <form id="studentForm">
+                <label for="id">Número de Identificación:</label>
+                <input type="text" id="id" name="id" required>
+                
+                <label for="nombres">Nombres:</label>
+                <input type="text" id="nombres" name="nombres" required>
+                
+                <label for="apellidos">Edad:</label>
+                <input type="text" id="edad" name="edad" required>
+                
+                <label for="direccion">Pais:</label>
+                <input type="text" id="pais" name="pais" required>
+                
+
+                <center><button type="button" onclick="agregarCamper()">Agregar</button></center>
+            </form>
+    
+    
+        </div>
+    </section>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    <section id="coordinacionSection">
+
+        <center><h1>Eliminar</h1></center>
+        <div class="container">
+                <label for="idEliminar">ID de la persona a Eliminar:</label>
+                <input type="text" id="idEliminar" name="idEliminar" required>
+                <center><button type="button" onclick="eliminarInscrito()">Eliminar Persona</button></center>
+            
+    
+    </section>
+
+<div class="container">
+    <h2>Personas</h2>
+    <pre id="jsonDisplay"></pre>
+</div>
+
+<script src="/Dia 6/script.js"></script>
+</body>
+</html>

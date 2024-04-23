@@ -24,6 +24,7 @@ function displayHero(data){
     let heroJob = document.getElementById("superHeroJob");
     let heroConex = document.getElementById("superHeroConex");
     let heroApariencia = document.getElementById("superHeroApariencia");
+    let heroBiograpy = document.getElementById("superHeroBiograpy");
     
     if (data.response === "error") {
         heroInfo.innerHTML = `<p>Error: ${data.error}</p>`;
@@ -63,7 +64,9 @@ function displayHero(data){
         <p>Raza: ${data.appearance.race}</p>
         <p>Altura: ${data.appearance.height[0]}, ${data.appearance.height[1]}</p>
         <p>Peso: ${data.appearance.weight[0]}, ${data.appearance.weight[1]}</p>
-        
+        `
+
+        heroBiograpy.innerHTML = `
         <h3>Biografía</h3>
         <p>Nombre completo: ${data.biography["full-name"]}</p>
         <p>Alias: ${data.biography.aliases}</p>

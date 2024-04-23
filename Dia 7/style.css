@@ -45,6 +45,13 @@ button{
     box-shadow: 0 0 50px rgb(163, 163, 163);
    }
 
+   #superHeroBiograpy{
+    background-color: white;   
+    width: 30vw;
+    border-radius: 1vw;
+    box-shadow: 0 0 50px rgb(0, 255, 191);
+   }
+
 #nombre{
     font-size: 3vw;
 }

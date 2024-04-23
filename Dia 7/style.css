@@ -2,6 +2,11 @@ body{
     background-image: url(./img/fondo.jpg);
 }
 
+img{
+    width: 70%;
+    height: 70%;
+}
+
 h1,label{
     color: white;
 }
@@ -12,6 +17,7 @@ button{
 }
 
 #superHeroInfo{
+position: absolute;
  background-color: white;   
  width: 30vw;
  border-radius: 1vw;
@@ -19,6 +25,8 @@ button{
 }
 
 #superHeroPower{
+    position: absolute;
+    margin-left: 68vw;
     background-color: white;   
     width: 30vw;
     border-radius: 1vw;
@@ -39,6 +47,8 @@ button{
     box-shadow: 0 0 50px rgb(255, 0, 200);
    }
    #superHeroApariencia{
+    position: absolute;
+    margin-left: 68vw;
     background-color: white;   
     width: 30vw;
     border-radius: 1vw;

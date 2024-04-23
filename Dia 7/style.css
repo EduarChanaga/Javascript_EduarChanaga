@@ -1,0 +1,50 @@
+body{
+    background-image: url(./img/fondo.jpg);
+}
+
+h1,label{
+    color: white;
+}
+
+button{
+    margin: 1vw;
+    font-size: 1vw;
+}
+
+#superHeroInfo{
+ background-color: white;   
+ width: 30vw;
+ border-radius: 1vw;
+ box-shadow: 0 0 50px rgb(255, 0, 0);
+}
+
+#superHeroPower{
+    background-color: white;   
+    width: 30vw;
+    border-radius: 1vw;
+    box-shadow: 0 0 50px rgb(229, 255, 0);
+   }
+
+   #superHeroJob{
+    background-color: white;   
+    width: 30vw;
+    border-radius: 1vw;
+    box-shadow: 0 0 50px rgb(0, 26, 255);
+   }
+
+   #superHeroConex{
+    background-color: white;   
+    width: 30vw;
+    border-radius: 1vw;
+    box-shadow: 0 0 50px rgb(255, 0, 200);
+   }
+   #superHeroApariencia{
+    background-color: white;   
+    width: 30vw;
+    border-radius: 1vw;
+    box-shadow: 0 0 50px rgb(163, 163, 163);
+   }
+
+#nombre{
+    font-size: 3vw;
+}

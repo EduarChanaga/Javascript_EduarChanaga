@@ -23,23 +23,70 @@ function displayHero(persona){
         heroInfo.innerHTML = `<p>Error: ${persona.detail}</p>`;
     } else {
         heroInfo.innerHTML = `
-        <h1>Persona</h1>
-        <p>Nombre: ${persona.name}</p>
-        <p>Height: ${persona.height}</p>
-        <p>Mass: ${persona.mass}</p>
-        <p>hair_color: ${persona.hair_color}</p>
-        <p>skin_color: ${persona.skin_color}</p>
-        <p>eye_color: ${persona.eye_color}</p>
-        <p>birth_year: ${persona.birth_year}</p>
-        <p>gender: ${persona.gender}</p>
-        <p>homeworld: ${persona.homeworld}</p>
-        <p>films: ${persona.films}</p>
-        <p>species: ${persona.species}</p>
-        <p>vehicles: ${persona.vehicles}</p>
-        <p>starships: ${persona.starships}</p>
-        <p>created: ${persona.created}</p>
-        <p>edited: ${persona.edited}</p>
-        <p>url: ${persona.url}</p>
+        <h1>Información de Persona</h1>
+
+<table>
+  <tr>
+    <th>Atributo</th>
+    <th>Valor</th>
+  </tr>
+  <tr>
+    <td>Nombre</td>
+    <td>${persona.name}</td>
+  </tr>
+  <tr>
+    <td>Altura</td>
+    <td>${persona.height} CM</td>
+  </tr>
+  <tr>
+    <td>Masa</td>
+    <td>${persona.mass} KG</td>
+  </tr>
+  <tr>
+    <td>Color de pelo</td>
+    <td>${persona.hair_color}</td>
+  </tr>
+  <tr>
+    <td>Color de piel</td>
+    <td>${persona.skin_color}</td>
+  </tr>
+  <tr>
+    <td>Color de ojos</td>
+    <td>${persona.eye_color}</td>
+  </tr>
+  <tr>
+    <td>Año de nacimiento</td>
+    <td>${persona.birth_year}</td>
+  </tr>
+  <tr>
+    <td>Género</td>
+    <td>${persona.gender}</td>
+  </tr>
+  <tr>
+    <td>Películas</td>
+    <td>${persona.films}</td>
+  </tr>
+  <tr>
+    <td>Vehículos</td>
+    <td>${persona.vehicles}</td>
+  </tr>
+  <tr>
+    <td>Naves estelares</td>
+    <td>${persona.starships}</td>
+  </tr>
+  <tr>
+    <td>Creado</td>
+    <td>${persona.created}</td>
+  </tr>
+  <tr>
+    <td>Editado</td>
+    <td>${persona.edited}</td>
+  </tr>
+  <tr>
+    <td>URL</td>
+    <td>${persona.url}</td>
+  </tr>
+</table>
         `;
         fetchSpecies(persona.species); 
         fetchWord(persona.homeworld); 
@@ -70,20 +117,62 @@ function displayEspecie(Specie){
         SpecieInfo.innerHTML = `<p>Error: ${Specie.detail}</p>`;
     } else {
         SpecieInfo.innerHTML = `
-        <h1>Especie persona</h1>
-        <p>Nombre: ${Specie.name}</p>
-        <p>classification: ${Specie.classification}</p>
-        <p>designation: ${Specie.designation}</p>
-        <p>average_height: ${Specie.average_height}</p>
-        <p>skin_colors: ${Specie.skin_colors}</p>
-        <p>hair_colors: ${Specie.hair_colors}</p>
-        <p>eye_colors: ${Specie.eye_colors}</p>
-        <p>average_lifespan: ${Specie.average_lifespan}</p>
-        <p>language: ${Specie.language}</p>
-        <p>created: ${Specie.created}</p>
-        <p>edited: ${Specie.edited}</p>
-        <p>url: ${Specie.url}</p>
+        <h1>Información de Especie</h1>
 
+<table>
+  <tr>
+    <th>Atributo</th>
+    <th>Valor</th>
+  </tr>
+  <tr>
+    <td>Nombre</td>
+    <td>${Specie.name}</td>
+  </tr>
+  <tr>
+    <td>Clasificación</td>
+    <td>${Specie.classification}</td>
+  </tr>
+  <tr>
+    <td>Designación</td>
+    <td>${Specie.designation}</td>
+  </tr>
+  <tr>
+    <td>Altura promedio</td>
+    <td>${Specie.average_height}</td>
+  </tr>
+  <tr>
+    <td>Colores de piel</td>
+    <td>${Specie.skin_colors}</td>
+  </tr>
+  <tr>
+    <td>Colores de pelo</td>
+    <td>${Specie.hair_colors}</td>
+  </tr>
+  <tr>
+    <td>Colores de ojos</td>
+    <td>${Specie.eye_colors}</td>
+  </tr>
+  <tr>
+    <td>Esperanza de vida promedio</td>
+    <td>${Specie.average_lifespan}</td>
+  </tr>
+  <tr>
+    <td>Lenguaje</td>
+    <td>${Specie.language}</td>
+  </tr>
+  <tr>
+    <td>Creado</td>
+    <td>${Specie.created}</td>
+  </tr>
+  <tr>
+    <td>Editado</td>
+    <td>${Specie.edited}</td>
+  </tr>
+  <tr>
+    <td>URL</td>
+    <td>${Specie.url}</td>
+  </tr>
+</table>
         
         `;
     }
@@ -137,20 +226,67 @@ function displayMundo(mundo){
         mundoInfo.innerHTML = `<p>Error: ${mundo.detail}</p>`;
     } else {
         mundoInfo.innerHTML = `
-        <h1>Mundo persona</h1>
-        <p>Nombre: ${mundo.name}</p>
-        <p>Rotation Period: ${mundo.rotation_period}</p>
-        <p>Orbital Period: ${mundo.orbital_period}</p>
-        <p>Diameter: ${mundo.diameter}</p>
-        <p>Climate: ${mundo.climate}</p>
-        <p>Gravity: ${mundo.gravity}</p>
-        <p>Terrain: ${mundo.terrain}</p>
-        <p>Surface Water: ${mundo.surface_water}</p>
-        <p>Population: ${mundo.population}</p>
-        <p>Films: ${mundo.films}</p>
-        <p>Created: ${mundo.created}</p>
-        <p>Edited: ${mundo.edited}</p>
-        <p>URL: ${mundo.url}</p>
+        <h1>Información de Mundo</h1>
+
+<table>
+  <tr>
+    <th>Atributo</th>
+    <th>Valor</th>
+  </tr>
+  <tr>
+    <td>Nombre</td>
+    <td>${mundo.name}</td>
+  </tr>
+  <tr>
+    <td>Periodo de rotación</td>
+    <td>${mundo.rotation_period}</td>
+  </tr>
+  <tr>
+    <td>Periodo orbital</td>
+    <td>${mundo.orbital_period}</td>
+  </tr>
+  <tr>
+    <td>Diámetro</td>
+    <td>${mundo.diameter}</td>
+  </tr>
+  <tr>
+    <td>Clima</td>
+    <td>${mundo.climate}</td>
+  </tr>
+  <tr>
+    <td>Gravedad</td>
+    <td>${mundo.gravity}</td>
+  </tr>
+  <tr>
+    <td>Territorio</td>
+    <td>${mundo.terrain}</td>
+  </tr>
+  <tr>
+    <td>Superficie de agua</td>
+    <td>${mundo.surface_water}</td>
+  </tr>
+  <tr>
+    <td>Población</td>
+    <td>${mundo.population}</td>
+  </tr>
+  <tr>
+    <td>Películas</td>
+    <td>${mundo.films}</td>
+  </tr>
+  <tr>
+    <td>Creado</td>
+    <td>${mundo.created}</td>
+  </tr>
+  <tr>
+    <td>Editado</td>
+    <td>${mundo.edited}</td>
+  </tr>
+  <tr>
+    <td>URL</td>
+    <td>${mundo.url}</td>
+  </tr>
+</table>
+
         `;
     }
 }

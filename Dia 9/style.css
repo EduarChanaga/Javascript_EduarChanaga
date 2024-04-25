@@ -1,0 +1,107 @@
+body{
+   background-image: url(./img/fondo.jpeg);
+}
+
+img{
+    width: 70%;
+    height: 70%;
+}
+
+label{
+    color: white;
+}
+
+h1{
+    color: gray ;
+}
+
+
+button{
+    margin: 1vw;
+    font-size: 1vw;
+}
+
+#superHeroInfo{
+ background-color: white;   
+ width: 80vw;
+ border-radius: 1vw;
+ box-shadow: 0 0 25px rgb(255, 238, 0);
+ padding: 2vw;
+ overflow: hidden; 
+ word-wrap: break-word; 
+}
+
+#mundoInfo{
+    background-color: white;   
+    width: 80vw;
+    border-radius: 1vw;
+    box-shadow: 0 0 50px rgb(255, 238, 0);
+    padding: 2vw;
+    overflow: hidden; 
+    word-wrap: break-word; 
+   }
+
+   #SpecieInfo{
+    background-color: white;   
+    width: 80vw;
+    border-radius: 1vw;
+    box-shadow: 0 0 50px rgb(255, 238, 0);
+    padding: 2vw;
+    overflow: hidden; 
+    word-wrap: break-word; 
+   }
+
+   #VehicleInfo{
+    background-color: white;   
+    width: 80vw;
+    border-radius: 1vw;
+    box-shadow: 0 0 50px rgb(255, 238, 0);
+    padding: 2vw;
+    overflow: hidden; 
+    word-wrap: break-word; 
+   }
+
+   table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+
+
+  #starwarsCenter {
+    font-family: 'Star Jedi', Arial, sans-serif;
+    background-color: black;
+    color: yellow;
+    padding: 10px;
+    border: 2px solid yellow;
+  }
+  
+  #starwarsCenter h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  #starwarsCenter label,
+  #starwarsCenter input,
+  #starwarsCenter button {
+    font-size: 14px;
+    padding: 5px;
+    margin: 3px;
+    border-radius: 3px;
+    border: 1px solid yellow;
+    background-color: transparent;
+    color: yellow;
+    cursor: pointer;
+  }
+  
+  #starwarsCenter input[type="number"] {
+    width: 80px;
+  }
+  

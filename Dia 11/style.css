@@ -1,0 +1,51 @@
+body{
+    background-color: rgb(114, 218, 204) ;
+}
+
+input{
+    position: absolute;
+}
+
+
+#info{
+    position: relative;
+}
+
+#PokemonInfo{
+    position: absolute;
+    margin-top: -25vi;
+    margin-left: 45vi;
+    width: 10vi;
+}
+
+#pokemon{
+
+    width: 6vi;
+}
+
+#NamePokemon{
+    position: absolute;
+    font-weight: bold;
+    margin-top: 9vi;
+    margin-left: 0vi;
+    font-size: 1vi;
+}
+
+input{
+    margin-top: -10vi;
+    margin-left: 41vi;
+    width: 15vi;
+    height: 2vi;
+}
+
+#prevBtn{
+    position: absolute;
+
+
+}
+#nextBtn{
+    position: absolute;
+
+    margin-left: 4vi;
+
+}

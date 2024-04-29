@@ -42,21 +42,19 @@ input{
 }
 
 #PokemonInfo{
+    
     position: absolute;
-    margin-top: -25vi;
-    margin-left: 45vi;
+    margin-top: -24vi;
+    margin-left: 44vi;
     width: 10vi;
-}
-
-#pokemon{
-
-    width: 6vi;
+    max-height: 8vi;
+    text-align: center;
 }
 
 #NamePokemon{
     position: absolute;
     font-weight: bold;
-    margin-top: 9vi;
+    margin-top: 8vi;
     margin-left: 0vi;
     font-size: 1vi;
 }
@@ -74,6 +72,10 @@ input{
     position: absolute;
 
 
+}
+
+#pokemon{
+    height: 5vi;
 }
 #nextBtn{
     position: absolute;

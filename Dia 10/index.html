@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="60;url=./datos.html">
     <title>Document</title>
     <link rel="stylesheet" href="./index.css">
 </head>
-<body>
-    <div class="boton" onclick="animar()">Iniciar</div>
+<body onload="animar()">
+  <audio id="sonido" src="./img/Y2meta.app - Star Wars Theme Song _ Star Wars Background Music _ Star Wars BGM _ Star Wars Theme Music (128 kbps).mp3" autoplay loop></audio>
+
     <div class="boton" onclick="window.location.href = 'datos.html'">Datos</div>
-<canvas id='snow'></canvas>
-<section class="intro texto_intro">
-  Hace muchos megasegundos,<br> en un servidor muy,<br> muy remoto ...
-</section>
-<section class="parrafos">
-  <div class="historia texto_historia">
-    <p>Un grupo de jóvenes empezaron su aventura en CampusLands</p>
-    <p>Decididos a no volver a dormir 8 horas diarias</p>
-    <p>Diariamente y con ayuda de chepeto avanzan paso a paso, galaxia por galaxia hacia su objetivo...</p>
-  </div>
-</section>
-<audio src="https://raw.githubusercontent.com/NestorPlasencia/sound/master/starwars.mp3" id="sonido" ></audio>
+    <canvas id='snow'></canvas>
+    <section class="intro texto_intro">
+      Hace muchos megasegundos,<br> en un servidor muy,<br> muy remoto ...
+    </section>
+    <section class="parrafos">
+      <div class="historia texto_historia">
+        <p>Un grupo de jóvenes empezaron su aventura en CampusLands</p>
+        <p>Decididos a no volver a dormir 8 horas diarias</p>
+        <p>Diariamente y con ayuda de chepeto avanzan paso a paso, galaxia por galaxia hacia su objetivo...</p>
+      </div>
+    </section>
+    <script src="./index.js"></script>
 </body>
-<script src="./index.js"></script>
 </html>

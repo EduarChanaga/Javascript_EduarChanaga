@@ -6,6 +6,16 @@ var historia = document.getElementsByClassName("historia")[0];
 var parrafos = document.getElementsByClassName("parrafos")[0];
 var sonido = document.getElementById("sonido");
 
+function animar() {
+  intro.className = 'intro texto_intro animacion_intro';
+  historia.className = 'historia texto_historia animacion_historia';
+  sonido.play();
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  animar(); // Llama a la función animar automáticamente al cargar la página
+});
+
 intro.style.fontSize = w / 30 + "px";
 historia.style.fontSize = w / 20 + "px";
 parrafos.style.height = h + "px";
@@ -21,11 +31,7 @@ window.addEventListener("resize", function() {
   nevada();
 });
 
-function animar() {
-  intro.className = 'intro texto_intro animacion_intro';
-  historia.className = 'historia texto_historia animacion_historia';
-  sonido.play();
-}
+
 
 
 /*Fondo de estrellas*/
@@ -63,3 +69,8 @@ function nevada() {
     ctx.fill();
   }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  animar(); // Llama a la función animar automáticamente al cargar la página
+  sonido.play(); // Reproduce automáticamente el sonido al cargar la página
+});

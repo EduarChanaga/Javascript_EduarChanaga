@@ -10,6 +10,28 @@ body{
     background-color: rgb(114, 218, 204) ;
 }
 
+button {
+    background-color: #333; 
+    color: #fff; 
+    padding: 10px 20px; 
+    border: none; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+  }
+
+
+  button:hover {
+    background-color: #555;
+  }
+
+
+  button:active {
+    background-color: #777; 
+  }
+
+#fondo{
+    width: 22vi;
+}
 input{
     position: absolute;
 }
@@ -47,13 +69,15 @@ input{
 }
 
 #prevBtn{
+    margin-top: -7vi;
+    margin-left: -6vi;
     position: absolute;
 
 
 }
 #nextBtn{
     position: absolute;
-
-    margin-left: 4vi;
+    margin-top: -7vi;
+    margin-left:0vi;
 
 }

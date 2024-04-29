@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juego de Cartas - Explicación</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <audio id="musica" loop autoplay>
+        <source src="./storage/musica.mp3" type="audio/mpeg">
+      </audio>
+    <center>
+
+        <div class="explicacion">
+            <h1>Juego de Cartas - Explicación</h1>
+            <p>Bienvenido al juego de cartas. En este juego, recibirás un mazo de 20 cartas al inicio. Tú y la computadora tendrán 10 cartas cada uno.</p>
+            <p>En cada ronda, selecciona una carta de tu mano para jugarla. La computadora también elegirá una carta aleatoriamente.</p>
+            <p>Después de jugar las cartas, se compararán y se asignará un puntaje según el valor de las cartas. El jugador con la carta de mayor valor ganará la ronda.</p>
+            <p>El juego terminará cuando no queden más cartas en alguno de los mazos. Al final, se mostrará el puntaje final y el ganador.</p>
+        </div>
+
+    </center>
+
+<div class="container">
+    <div class="mano" id="mano-jugador"></div>
+    <div class="info" id="info-juego">Puntuación Jugador: 0 | Puntuación Computadora: 0</div>
+    <div class="resultado" id="resultado"></div>
+    <div id="cartas-seleccionadas" class="cartas-seleccionadas"></div>
+    <button id="reiniciar-btn" onclick="window.location.reload()">Reiniciar Juego</button>
+</div>
+<img id="carta-computadora" class="carta-computadora" src="" alt="" style="display: none;">
+<script src="./script.js"></script>
+</body>
+</html>

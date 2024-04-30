@@ -66,6 +66,10 @@ function jugarCarta(jugador, cartaJugada, index) {
     // Deshabilita temporalmente la jugabilidad para evitar múltiples clics
     cartasHabilitadas = false;
 
+    // Reproduce el sonido de clic
+    const sonidoClick = document.getElementById('sonidoClick');
+    sonidoClick.play();
+
     // Selecciona aleatoriamente una carta del mazo de la computadora
     const cartaComputadora = computadoraMazo[Math.floor(Math.random() * computadoraMazo.length)];
 
@@ -93,9 +97,9 @@ function jugarCarta(jugador, cartaJugada, index) {
             // Si no, habilita nuevamente la jugabilidad después de un tiempo
             setTimeout(() => {
                 cartasHabilitadas = true;
-            }, 2000);
+            }, 1000); // Reducir el tiempo de espera a 1000 milisegundos (1 segundo)
         }
-    }, 2000);
+    }, 1000); // Reducir el tiempo de espera a 1000 milisegundos (1 segundo)
 }
 
 // Función para mostrar las cartas seleccionadas durante la ronda
@@ -103,52 +107,30 @@ function mostrarCartasSeleccionadas(cartaJugador, cartaComputadora) {
     const contenedorCartas = document.getElementById('cartas-seleccionadas');
     contenedorCartas.innerHTML = '';
 
-    // Crea elementos de imagen para las cartas seleccionadas y las muestra en el contenedor
     // Creación del elemento de imagen para la carta del jugador
-const cartaJugadorElemento = document.createElement('img');
-
-            // Asignación de la clase al elemento de imagen
-            cartaJugadorElemento.className = 'carta-seleccionada';
-
-            // Asignación de la URL de la imagen de la carta del jugador al atributo src del elemento de imagen
-            cartaJugadorElemento.src = cartaJugador.image;
-
-            // Asignación del texto alternativo al elemento de imagen para accesibilidad e información adicional
-            cartaJugadorElemento.alt = `${cartaJugador.value} ${cartaJugador.suit}`;
-
-            // Agregar el elemento de imagen de la carta del jugador al contenedor de cartas seleccionadas en la interfaz
-            contenedorCartas.appendChild(cartaJugadorElemento);
-
+    const cartaJugadorElemento = document.createElement('img');
+    cartaJugadorElemento.className = 'carta-seleccionada';
+    cartaJugadorElemento.src = cartaJugador.image;
+    cartaJugadorElemento.alt = `${cartaJugador.value} ${cartaJugador.suit}`;
+    contenedorCartas.appendChild(cartaJugadorElemento);
 
     const vsElemento = document.createElement('span');
     vsElemento.className = 'vs';
     vsElemento.textContent = 'vs';
     contenedorCartas.appendChild(vsElemento);
 
+    // Creación del elemento de imagen para la carta de la computadora
     const cartaComputadoraElemento = document.createElement('img');
     cartaComputadoraElemento.className = 'carta-seleccionada';
     cartaComputadoraElemento.src = cartaComputadora.image;
     cartaComputadoraElemento.alt = `${cartaComputadora.value} ${cartaComputadora.suit}`;
     contenedorCartas.appendChild(cartaComputadoraElemento);
 
-    // Limpia las cartas seleccionadas después de un tiempo para mostrar solo durante la comparación
+    // Limpieza después de un tiempo para mostrar solo durante la comparación
     setTimeout(() => {
         contenedorCartas.innerHTML = '';
-    }, 2000);
-
-    //Obtención del contenedor de cartas: Busca en el HTML el elemento que servirá para mostrar las cartas seleccionadas.
-
-    //Creación de elementos de imagen: Crea imágenes para representar las cartas del jugador y la computadora. 
-    //Asigna la URL de la imagen de cada carta (cartaJugador.image y cartaComputadora.image) a estos elementos de imagen.
-
-    //Añadir elementos al contenedor: Coloca las imágenes de las cartas del jugador y la computadora, junto con un texto "vs" para indicar la comparación, 
-    //dentro del contenedor obtenido en el paso 1.
-
-    //Limpieza después de un tiempo: Después de 2 segundos, elimina las imágenes y el texto del contenedor para preparar la interfaz para la siguiente
-    // acción del juego.
+    }, 1000); // Reducir el tiempo de espera a 1000 milisegundos (1 segundo)
 }
-
-// Variable para controlar si se pueden jugar cartas
 let cartasHabilitadas = true;
 
 // Función para comparar las cartas jugadas
@@ -269,6 +251,7 @@ function mostrarGanador() {
         localStorage.setItem('victoriasComputadora', victoriasComputadora + 1);
     } else {
         mensaje = 'Empate.';
+        img = 'empate.png';
     }
     // Muestra el mensaje del ganador en la interfaz gráfica
     const resultadoDiv = document.getElementById('resultado');
@@ -296,3 +279,9 @@ function mostrarGanador() {
 document.addEventListener('DOMContentLoaded', iniciarJuego);
 
 
+
+// Obtén el elemento de audio
+const audio = document.getElementById('baraja');
+
+// Aumenta la velocidad de reproducción al doble
+audio.playbackRate = 3;

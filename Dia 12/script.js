@@ -85,10 +85,16 @@ function jugarCarta(jugador, cartaJugada, index) {
         mostrarCartasEnMano(jugadorMazo, 'jugador');
         ocultarCartaComputadora();
 
-        // Habilita nuevamente la jugabilidad después de un tiempo
-        setTimeout(() => {
-            cartasHabilitadas = true;
-        }, 2000);
+        // Verifica si ambos jugadores se quedaron sin cartas
+        if (jugadorMazo.length === 0 && computadoraMazo.length === 0) {
+            // Si ambos jugadores se quedaron sin cartas, muestra al ganador
+            mostrarGanador();
+        } else {
+            // Si no, habilita nuevamente la jugabilidad después de un tiempo
+            setTimeout(() => {
+                cartasHabilitadas = true;
+            }, 2000);
+        }
     }, 2000);
 }
 
@@ -186,21 +192,40 @@ function actualizarPuntaje(resultado) {
     document.getElementById('info-juego').textContent = `Puntuación Jugador: ${puntajeJugador} | Puntuación Computadora: ${puntajeComputadora}`;
 }
 
-// Función para mostrar al ganador del juego
+// Función para mostrar al ganador del juego y las victorias de ambos jugadores
 function mostrarGanador() {
     let mensaje = '';
+    let img = '';
     // Determina quién ganó el juego basándose en los puntajes finales
     if (puntajeJugador > puntajeComputadora) {
         mensaje = '¡Felicidades, has ganado!';
+        img = 'persona.png';
+        // Incrementa el contador de victorias del jugador
+        const victoriasJugador = parseInt(localStorage.getItem('victoriasJugador')) || 0;
+        localStorage.setItem('victoriasJugador', victoriasJugador + 1);
     } else if (puntajeJugador < puntajeComputadora) {
         mensaje = 'La Computadora ha ganado.';
+        img = 'computadora.png';
+        // Incrementa el contador de victorias de la computadora
+        const victoriasComputadora = parseInt(localStorage.getItem('victoriasComputadora')) || 0;
+        localStorage.setItem('victoriasComputadora', victoriasComputadora + 1);
     } else {
         mensaje = 'Empate.';
     }
     // Muestra el mensaje del ganador en la interfaz gráfica
     const resultadoDiv = document.getElementById('resultado');
-    resultadoDiv.innerHTML = `<h1>${mensaje}</h1>`;
+    resultadoDiv.innerHTML = `
+    <h1>${mensaje}</h1>
+    <img src="./storage/${img}" width="300" alt="imagen del ganador">
+    `;
+
+    // Mostrar el número total de victorias del jugador y la computadora
+    const totalVictoriasJugador = parseInt(localStorage.getItem('victoriasJugador')) || 0;
+    const totalVictoriasComputadora = parseInt(localStorage.getItem('victoriasComputadora')) || 0;
+    resultadoDiv.innerHTML += `<p>Total de victorias del jugador: ${totalVictoriasJugador}</p>`;
+    resultadoDiv.innerHTML += `<p>Total de victorias de la computadora: ${totalVictoriasComputadora}</p>`;
 }
+
 
 // Función para ocultar la carta de la computadora en la interfaz gráfica
 function ocultarCartaComputadora() {
@@ -216,5 +241,58 @@ function mostrarCartaComputadora(carta) {
     cartaComputadora.style.display = 'block';
 }
 
+
+// Evento al cargar el documento para iniciar el juego
+document.addEventListener('DOMContentLoaded', () => {
+    iniciarJuego();
+    mostrarTotalVictorias();
+});
+
+
+
+// Función para mostrar al ganador del juego y actualizar el contador de victorias
+function mostrarGanador() {
+    let mensaje = '';
+    let img = '';
+    // Determina quién ganó el juego basándose en los puntajes finales
+    if (puntajeJugador > puntajeComputadora) {
+        mensaje = '¡Felicidades, has ganado!';
+        img = 'persona.png';
+        // Incrementa el contador de victorias del jugador
+        const victoriasJugador = parseInt(localStorage.getItem('victoriasJugador')) || 0;
+        localStorage.setItem('victoriasJugador', victoriasJugador + 1);
+    } else if (puntajeJugador < puntajeComputadora) {
+        mensaje = 'La Computadora ha ganado.';
+        img = 'computadora.png';
+        // Incrementa el contador de victorias de la computadora
+        const victoriasComputadora = parseInt(localStorage.getItem('victoriasComputadora')) || 0;
+        localStorage.setItem('victoriasComputadora', victoriasComputadora + 1);
+    } else {
+        mensaje = 'Empate.';
+    }
+    // Muestra el mensaje del ganador en la interfaz gráfica
+    const resultadoDiv = document.getElementById('resultado');
+    resultadoDiv.innerHTML = `
+    <h1>${mensaje}</h1>
+    <img src="./storage/${img}" width="300" alt="imagen del ganador">
+    `;
+
+    // Actualiza y muestra el número total de victorias del jugador y la computadora
+    mostrarTotalVictorias();
+}
+
+                            // Función para mostrar el número total de victorias del jugador y la computadora
+                            function mostrarTotalVictorias() {
+                                const victoriasJugador = parseInt(localStorage.getItem('victoriasJugador')) || 0;
+                                const victoriasComputadora = parseInt(localStorage.getItem('victoriasComputadora')) || 0;
+
+                                const victoriasJugadorDiv = document.getElementById('victorias-jugador');
+                                const victoriasComputadoraDiv = document.getElementById('victorias-computadora');
+
+                                victoriasJugadorDiv.textContent = `Total de victorias del jugador: ${victoriasJugador}`;
+                                victoriasComputadoraDiv.textContent = `Total de victorias de la computadora: ${victoriasComputadora}`;
+                            }
 // Evento al cargar el documento para iniciar el juego
 document.addEventListener('DOMContentLoaded', iniciarJuego);
+
+

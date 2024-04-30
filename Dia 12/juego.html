@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juego de Cartas</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <audio id="musica" loop autoplay>
+        <source src="./storage/musica.mp3" type="audio/mpeg">
+      </audio>
+    
+
+<div class="container">
+    <div class="mano" id="mano-jugador"></div>
+    <hr>
+    <div class="info" id="info-juego">Puntuación Jugador: 0 | Puntuación Computadora: 0</div>
+    <div class="resultado" id="resultado"></div>
+    <div id="cartas-seleccionadas" class="cartas-seleccionadas"></div>
+    <button id="reiniciar-btn" onclick="window.location.reload()">Reiniciar Juego</button>
+</div>
+<img id="carta-computadora" class="carta-computadora" src="" alt="" style="display: none;">
+
+<!-- Mensaje de victoria y total de victorias -->
+
+    <div class="victorias-container">
+        <div class="victorias-jugador" id="victorias-jugador"></div>
+        <div class="victorias-computadora" id="victorias-computadora"></div>
+    </div>
+
+
+<script src="./script.js"></script>
+</body>
+</html>

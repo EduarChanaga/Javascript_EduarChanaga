@@ -16,19 +16,6 @@ body {
    
 }
 
-
-.victorias-container {
-    font-size: 1vi;
-    justify-content: center;
-    max-width: 18vi;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #333;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-   
-}
-
 .mano {
     justify-content: center;
     gap: 10px;
@@ -107,4 +94,5 @@ body {
 
 #reiniciar-btn:hover {
     background-color: #ffc700;
+    padding: 20px 40px;
 }

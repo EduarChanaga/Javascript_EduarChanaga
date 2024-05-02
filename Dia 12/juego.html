@@ -19,14 +19,29 @@
     
 <br><br><br>
 <div class="container">
+    <div id="cartas-seleccionadas" class="cartas-seleccionadas"></div>
+    <button id="reiniciar-btn" onclick="window.location.reload()">Barajar Juego</button>
+    <br><br>
     <div class="mano" id="mano-jugador"></div>
+    <hr>
+    <center>
+    <button id="ver-cartas-computadora-btn">Ver Cartas de la Computadora</button>
+    <div id="cartas-computadora-container" style="display: none;"></div>
+    <button id="cerrar-cartas-computadora-btn" onclick="cerrarCartasComputadora()">Ocultar cartas de la Computadora</button>
+    </center>
+    
+
     <hr>
     <div class="info" id="info-juego">Puntuación Jugador: 0 | Puntuación Computadora: 0</div>
     <div class="resultado" id="resultado"></div>
-    <div id="cartas-seleccionadas" class="cartas-seleccionadas"></div>
-    <button id="reiniciar-btn" onclick="window.location.reload()">Barajar Juego</button>
+    
 </div>
 <img id="carta-computadora" class="carta-computadora" src="" alt="" style="display: none;">
+
+
+
+
+
 
 <!-- Mensaje de victoria y total de victorias -->
 

@@ -108,6 +108,42 @@ body {
     background-color: #ffc700;
 }
 
+
+
+#ver-cartas-computadora-btn {
+    background-color: #ffcc00;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 10px; 
+}
+
+
+#cerrar-cartas-computadora-btn {
+    background-color: #ffcc00;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#cartas-computadora-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; 
+}
+
+
+#cartas-computadora-container img {
+    width: 5vi;
+    height: 4.5vi; 
+    margin: 5px; 
+}
+
 /* Media query para teléfono */
 @media only screen and (max-width: 600px) {
   /* Estilos base */

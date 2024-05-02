@@ -30,39 +30,34 @@ async function iniciarJuego() {
 
 // Función para mostrar las cartas en la mano del jugador o la computadora
 function mostrarCartasEnMano(cartas, jugador) {
-    const contenedor = document.getElementById(jugador === 'jugador' ? 'mano-jugador' : 'mano-computadora');
-    contenedor.innerHTML = '';
+    const contenedor = document.getElementById(jugador === 'jugador' ? 'mano-jugador' : 'cartas-computadora-container');
 
-    // Crea elementos de imagen para cada carta y los muestra en el contenedor adecuado
-    // Itera sobre cada carta en el arreglo de cartas
-cartas.forEach((carta, index) => {
-    // Crea un nuevo elemento de imagen (<img>) para representar la carta
-    const elementoCarta = document.createElement('img');
-
-    // Establece la clase del elemento de imagen como 'card'
-    elementoCarta.className = 'card';
-
-    // Asigna la URL de la imagen de la carta al atributo src del elemento de imagen
-    elementoCarta.src = carta.image;
-
-    // Establece el texto alternativo del elemento de imagen con el valor y el palo de la carta
-    elementoCarta.alt = `${carta.value} ${carta.suit}`;
-
-    // Asigna un evento onclick al elemento de imagen para manejar el clic en la carta
-    elementoCarta.onclick = () => jugarCarta(jugador, carta, index);
-
-    // Agrega el elemento de imagen al contenedor especificado
-    contenedor.appendChild(elementoCarta);
-});
+    // Si el jugador es la computadora, agregamos las cartas nuevas a las anteriores
+    if (jugador === 'computadora') {
+        cartas.forEach(carta => {
+            const elementoCarta = document.createElement('img');
+            elementoCarta.className = 'card';
+            elementoCarta.src = carta.image;
+            elementoCarta.alt = `${carta.value} ${carta.suit}`;
+            contenedor.appendChild(elementoCarta);
+        });
+    } else { // Si el jugador es el jugador humano, mantenemos el comportamiento actual
+        contenedor.innerHTML = '';
+        cartas.forEach((carta, index) => {
+            const elementoCarta = document.createElement('img');
+            elementoCarta.className = 'card';
+            elementoCarta.src = carta.image;
+            elementoCarta.alt = `${carta.value} ${carta.suit}`;
+            elementoCarta.onclick = () => jugarCarta(jugador, carta, index);
+            contenedor.appendChild(elementoCarta);
+        });
+    }
 }
+
+let mostrandoCartasComputadora = false;
 
 // Función para jugar una carta
 function jugarCarta(jugador, cartaJugada, index) {
-    // Verifica si se pueden jugar cartas
-    if (!cartasHabilitadas) {
-        return;
-    }
-
     // Deshabilita temporalmente la jugabilidad para evitar múltiples clics
     cartasHabilitadas = false;
 
@@ -89,6 +84,11 @@ function jugarCarta(jugador, cartaJugada, index) {
         mostrarCartasEnMano(jugadorMazo, 'jugador');
         ocultarCartaComputadora();
 
+        // Actualiza las cartas de la computadora en el contenedor
+        const contenedorCartasComputadora = document.getElementById('cartas-computadora-container');
+        contenedorCartasComputadora.innerHTML = ''; // Limpiamos el contenedor antes de agregar las nuevas cartas
+        mostrarCartasEnMano(computadoraMazo, 'computadora');
+
         // Verifica si ambos jugadores se quedaron sin cartas
         if (jugadorMazo.length === 0 && computadoraMazo.length === 0) {
             // Si ambos jugadores se quedaron sin cartas, muestra al ganador
@@ -100,6 +100,47 @@ function jugarCarta(jugador, cartaJugada, index) {
             }, 1000); // Reducir el tiempo de espera a 1000 milisegundos (1 segundo)
         }
     }, 1000); // Reducir el tiempo de espera a 1000 milisegundos (1 segundo)
+}
+
+
+
+
+
+
+// Evento de clic para el botón de ver cartas de la computadora
+document.getElementById('ver-cartas-computadora-btn').addEventListener('click', () => {
+    mostrandoCartasComputadora = true;
+    mostrarCartasComputadora();
+});
+
+// Función para mostrar las cartas de la computadora
+function mostrarCartasComputadora() {
+    // Mostrar el contenedor de las cartas de la computadora
+    const contenedorCartas = document.getElementById('cartas-computadora-container');
+    contenedorCartas.style.display = 'block';
+    document.getElementById('ver-cartas-computadora-btn').style.display = 'none';
+    document.getElementById('cerrar-cartas-computadora-btn').style.display = 'block';
+
+    // Mostrar cada carta de la computadora en el contenedor
+    computadoraMazo.forEach((carta) => {
+        const elementoCarta = document.createElement('img');
+        elementoCarta.className = 'card';
+        elementoCarta.src = carta.image;
+        elementoCarta.alt = `${carta.value} ${carta.suit}`;
+        contenedorCartas.appendChild(elementoCarta);
+    });
+
+    // Ocultar el botón después de mostrar las cartas
+    document.getElementById('ver-cartas-computadora-btn').style.display = 'none';
+}
+
+// Función para cerrar la ventana de las cartas de la computadora
+function cerrarCartasComputadora() {
+    const contenedorCartas = document.getElementById('cartas-computadora-container');
+    contenedorCartas.innerHTML = ''; // Limpiar el contenido del contenedor
+    contenedorCartas.style.display = 'none'; // Ocultar el contenedor
+    mostrandoCartasComputadora = false; // Restablecer la variable global
+    document.getElementById('ver-cartas-computadora-btn').style.display = 'block'; // Mostrar nuevamente el botón
 }
 
 // Función para mostrar las cartas seleccionadas durante la ronda
@@ -204,8 +245,7 @@ function mostrarGanador() {
     // Mostrar el número total de victorias del jugador y la computadora
     const totalVictoriasJugador = parseInt(localStorage.getItem('victoriasJugador')) || 0;
     const totalVictoriasComputadora = parseInt(localStorage.getItem('victoriasComputadora')) || 0;
-    resultadoDiv.innerHTML += `<p>Total de victorias del jugador: ${totalVictoriasJugador}</p>`;
-    resultadoDiv.innerHTML += `<p>Total de victorias de la computadora: ${totalVictoriasComputadora}</p>`;
+   
 }
 
 
@@ -213,6 +253,7 @@ function mostrarGanador() {
 function ocultarCartaComputadora() {
     const cartaComputadora = document.getElementById('carta-computadora');
     cartaComputadora.style.display = 'none';
+  
 }
 
 // Función para mostrar la carta de la computadora en la interfaz gráfica

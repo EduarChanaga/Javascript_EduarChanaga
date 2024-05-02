@@ -1,50 +1,23 @@
+/* Importación de fuentes */
 @import url(https://fonts.googleapis.com/css?family=News+Cycle:400,700);
 
+/* Estilo del cuerpo de la página */
 body {
   margin: 0;
   background: #000;
   overflow: hidden;
 }
 
-.intro {
-  position: absolute;
-  top: 40%;
-  left: 20%;
-  z-index: 1;
-  opacity: 0;
-}
-
-.texto_intro {
-  font-family: "News Cycle", sans-serif;
+/* Estilo del contenedor de la explicación */
+.explicacion {
+  margin-top: 100px;
+  text-align: center;
   color: #4bd5ee;
-  font-weight: 400;
-  letter-spacing: .1em;
-}
-
-.historia {
-  position: absolute;
-  top: 80%;
-}
-
-.parrafos {
-  position: absolute;
-  left: 15%;
-  width: 70%;
-  z-index: 1;
-  transform-origin: 50%;
-  transform: perspective(300px) rotateX(20deg);
-}
-
-.texto_historia {
   font-family: "News Cycle", sans-serif;
-  font-weight: 700;
-  color: #ff6;
-  text-align: justify;
-  letter-spacing: .1em;
-  line-height: 1.1em;
 }
 
-.boton {
+/* Estilo del botón */
+#reiniciar-btn {
   color: white;
   display: inline-block;
   margin: 10px;
@@ -52,16 +25,10 @@ body {
   border: 3px solid;
   border-radius: 5px;
   cursor: pointer;
+  background-color: #000;
 }
 
-.animacion_intro {
-  animation: intro 5s ease-out 0s;
-}
-
-.animacion_historia {
-  animation: parrafos 50s linear 6s;
-}
-
+/* Animaciones */
 @keyframes intro {
   0% {
     opacity: 0;
@@ -89,12 +56,4 @@ body {
     top: -70%;
     opacity: 0;
   }
-}
-
-/*Fondo de estrellas*/
-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
 }

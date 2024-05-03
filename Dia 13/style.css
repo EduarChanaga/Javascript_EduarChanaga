@@ -1,0 +1,162 @@
+/* Estilos para la página */
+#mis_heroes{
+    background-color:rgb(236, 236, 236);
+}
+
+#one{
+    border: rgb(200, 200, 200);
+    border-style:solid;
+}
+
+
+#two{
+  border: 0.8px rgb(0, 153, 218);
+  border-style:solid;
+
+}
+
+h3, h4 {
+  color: rgb(0, 133, 190);
+}
+
+table {
+    border-collapse: collapse;
+  }
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+  }
+  
+  .heroes {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1, h2 {
+    color: #333;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    margin-bottom: 5px;
+    display:inline-block;
+  }
+  
+  input {
+    width: 20vi;
+    padding: 10px;
+    margin-right: 3vi;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    background-color: rgb(223, 223, 223);
+  }
+
+ select {
+    width: 100%;
+    padding: 10px;
+    margin-right: 3vi;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    background-color: rgb(223, 223, 223);
+  }
+  
+  button {
+    padding: 8px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+#trajess {
+    padding: 8px 20px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+
+
+#refresh {
+  padding: 8px 20px;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+  #agregar_traje {
+    background-color: #ffb300;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #000000;
+  }
+  
+  
+  
+  #a {
+    padding: 8px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 50px;
+  }
+  
+
+  
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+  }
+  
+  
+#heroes, #cochesSection {
+    display: none;
+  }
+  
+  a{
+    text-decoration: none;
+    color: white;
+  }
+
+  #traje{
+    background-color: white;
+  }
+
+  p{
+    color: #007bff;
+    text-align: left;
+  }
+
+  #nombre_trajes{
+    text-align: left;
+    width: 30vi;
+  }
+
+  

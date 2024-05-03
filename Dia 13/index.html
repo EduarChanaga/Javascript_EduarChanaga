@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Quiz</title>
+</head>
+<body>
+
+<br><br><br><br><br><br>
+
+
+<center>
+    <table id="tabla_principal">
+        <tr id="one">
+          <td id="mis_heroes">Mis Heroes</td>
+
+        </tr>
+        <tr id="one">
+          <td id="one">
+            <h1>Gestion de heroes</h1>
+            <table>
+                <form id="studentForm">
+                <tr>
+                    <td>
+                        <label for="nombres">Nombre personaje:</label>
+                    </td>
+                    <td>
+                        <label for="nombres">Nombre actor:</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input type="text" id="nombres" name="nombres" required>
+                    </td>
+                    <td>
+                        <input type="text" id="actor" name="actor" required>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <label for="edad">Edad actor:</label>
+                    </td>
+                    <td>
+                        <label for="direccion">Ubicacion:</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input type="text" id="edad" name="edad" required>
+                    </td>
+                    <td>
+                        <input type="text" id="Ubicacion" name="Ubicacion" required>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <label for="direccion">Poster:</label>
+                    </td>
+                    <td>
+                        <label for="direccion">Ubicacion:</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input type="text" id="Poster" name="Poster" required>
+                    </td>
+                    <td>
+                        <label>
+                            <input id="fecha" type="date" name="bday" />
+                          </label>
+                    </td>
+                </tr>
+
+              <td>
+                <label for="Productora">Productora</label>
+                <br>
+                <select name="Productora" id="Productora">
+                    <option value="Warner">Warner</option>
+                    <option value="Marvel">Marvel</option>
+                    <option value="DC">DC</option>
+                    <option value="Disney">Disney</option>
+                </select>
+              </td>
+               
+
+               
+            </table>
+
+<center>
+
+
+            <section id="trajes" style="display:none;">
+                <table>
+
+                    <tr id="two">
+                        <td id="mis_heroes">Registro de trajes</td>
+              
+                    </tr>
+                    <tr id="two">
+                        <td>
+                           
+                            <h3>Trajes del personaje</h3>
+                            <h4>en esta section podra registrar los nombres de los trajes usados por el actor en cada una de las peliculas</h4>
+                            <br>
+                            <h4>Agregar un traje es obligatorio</h4>
+                       
+                            
+                            <button id="agregar_traje" type="button" onclick="agregar_trajes()">+</button>
+                           <center>
+                            <div id="nombre_trajes">
+                            </div>
+ 
+                           </center>
+                        </td>
+                    </tr>
+                    
+                </table>
+            </section>
+            
+              
+</center>
+          
+            <br>
+
+                <button id="trajess" type="button" onclick="trajes()">Nuevo heroe</button>
+                <button type="button" onclick="agregar()">Guardar Heroe</button>
+                <button id="refresh">Cancelar</button>
+          </td>
+        </tr>
+                
+    </table>
+</center>
+    
+
+    </section>
+    
+<br><br><br>
+
+<center>
+
+    <table>
+
+        <tr id="one">
+            <td id="mis_heroes">Eliminar</td>
+  
+        </tr>
+        <tr id="one">
+            <td>
+                <h1>Eliminar heroes</h1>
+                <label for="idEliminar">Nombre del heroe a Eliminar:</label> <br>
+                <input type="text" id="idEliminar" name="idEliminar" required>
+                <center><button type="button" onclick="eliminar()">Eliminar heroe</button></center>
+            
+            </td>
+        </tr>
+        
+    </table>
+</center>
+
+
+    
+<br><br><br>
+
+<center>
+
+    <table>
+
+        <tr id="one">
+            <td id="mis_heroes">Heroes</td>
+  
+        </tr>
+        <tr id="one">
+            <td>
+                <pre id="jsonDisplay"></pre>
+            </td>
+        </tr>
+        
+    </table>
+</center>
+
+</body>
+<script src="./script.js"></script>
+</html>

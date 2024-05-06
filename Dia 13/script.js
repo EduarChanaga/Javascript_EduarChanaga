@@ -32,8 +32,7 @@ function agregar() {
     let jsonDisplay = document.getElementById("jsonDisplay");
     jsonDisplay.innerHTML = JSON.stringify(persona, null, 2); // Mostrar JSON formateado con espacios de indentación
 
-    // Limpiar el formulario después de agregar un estudiante
-    document.getElementById("HeroesForm").reset();
+    document.getElementById("studentForm").reset();
 }
 
 function eliminar() {
@@ -53,7 +52,7 @@ function eliminar() {
         // Limpiar el campo de ID para eliminar
         document.getElementById("idEliminar").value = "";
     } else {
-        alert("No se encontró ningún estudiante con la ID especificada.");
+        alert("No se encontró ningún heroe con el nombre especificada.");
     }
 }
 

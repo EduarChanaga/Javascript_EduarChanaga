@@ -1,0 +1,58 @@
+body{
+    background-color: rgb(57, 57, 57);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container{
+    background-color: white;
+    border-radius: 2vi;
+    width: 40vi;
+    box-shadow: 5px 5px 5px 15px rgba(19, 19, 19, 0.2);
+}
+
+
+#imagen{
+    border-radius: 20vi;
+    border-color: gray;
+    border-style:  4vi;
+}
+
+
+#boton{
+    width: 3vi;
+    opacity: 30%;
+    
+}
+
+#boton:hover{
+    opacity: 100%;
+    
+}
+
+button{
+    background-color: transparent;
+    border: none;
+    padding:1vi;
+}
+
+button:hover{
+    border: block;
+    background-color: transparent;
+    padding:1vi;
+    transform: translateY(-0.4vi);
+    border: block;
+    border-radius: 10px;
+    border-color: green;
+}
+
+h4{
+    color: gray;
+}
+
+#container_password,
+#container_emmail,
+#container_phone,
+#container_address,
+#container_birthday{
+    display:none;
+}

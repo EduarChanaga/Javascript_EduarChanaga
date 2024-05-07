@@ -13,8 +13,8 @@ body{
 
 #imagen{
     border-radius: 20vi;
-    border-color: gray;
-    border-style:  4vi;
+    border:solid 0.8vi rgb(81, 81, 81); 
+    border-style:groove;
 }
 
 
@@ -29,13 +29,13 @@ body{
     
 }
 
-button{
+button#two{
     background-color: transparent;
     border: none;
     padding:1vi;
 }
 
-button:hover{
+button#two:hover{
     border: block;
     background-color: transparent;
     padding:1vi;
@@ -55,4 +55,20 @@ h4{
 #container_address,
 #container_birthday{
     display:none;
+}
+
+
+button#one{
+    width: 10vi;
+    height: 4vi;
+    border-radius: 10px;
+}
+
+button#one:hover{
+    border: block;
+    padding:1vi;
+    transform: translateY(-0.4vi);
+    border: block;
+    border-radius: 10px;
+    border-color: green;
 }

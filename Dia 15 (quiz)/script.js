@@ -157,3 +157,7 @@ function contraseña(){
 
 
 
+let refresh = document.getElementById('one');
+refresh.addEventListener('click', _ => {
+            location.reload();
+})

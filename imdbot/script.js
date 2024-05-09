@@ -1,15 +1,17 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const imageContainer = document.getElementById("imageContainer");
-    const loadMoreButton = document.getElementById("loadMoreButton");
-    const fondoDiv = document.getElementById("fondo");
-    const maxImagesPerLoad = 5; // Número máximo de imágenes por carga
+document.addEventListener("DOMContentLoaded", async () => {
+    const imageContainer = document.getElementById("imagen-container");
+    const maxImagesPerLoad = 20; // Número máximo de imágenes por carga
     const imageUrlPrefix = 'https://search.imdbot.workers.dev/?q='; // Prefijo de la URL de la API
-    let loadedImages = 0; // Contador de imágenes cargadas
+
+    // Arreglo para almacenar las imágenes cargadas
+    let images = [];
 
     const fetchRandomImages = async () => {
         const uniqueImages = new Set(); // Conjunto para mantener un registro de imágenes únicas
+        let imagesLoaded = 0;
 
-        while (uniqueImages.size < maxImagesPerLoad) { // Mientras no se hayan obtenido todas las imágenes deseadas
+        // Solicitar imágenes individualmente hasta alcanzar el número máximo de imágenes por carga
+        while (imagesLoaded < maxImagesPerLoad) {
             const randomQuery = Math.random().toString(36).substring(7); // Generar una cadena aleatoria para la consulta
             const imageUrl = imageUrlPrefix + randomQuery;
 
@@ -19,21 +21,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (data.description && data.description.length > 0) {
                     const randomIndex = Math.floor(Math.random() * data.description.length);
-                    const imageSrc = data.description[randomIndex]["#IMG_POSTER"];
+                    let imageSrc = data.description[randomIndex]["#IMG_POSTER"];
 
-                    if (imageSrc && !uniqueImages.has(imageSrc)) { // Verificar si la imagen es única
-                        const imgElement = document.createElement("img");
-                        imgElement.src = imageSrc;
-                        imgElement.addEventListener("click", () => {
-                            fondoDiv.style.backgroundImage = `url('${imageSrc}')`;
-                            fondoDiv.style.backgroundSize = 'cover';
-                            fondoDiv.style.backgroundRepeat = 'no-repeat';
-                            fondoDiv.style.backgroundPosition = 'center';
-                            imgElement.style.filter = 'blur(0px)'; // Quitar el efecto borroso de la imagen
-                        });
-                        imageContainer.appendChild(imgElement);
+                    // Verificar si la imagen está definida
+                    if (!imageSrc) {
+                        imageSrc = "./storage/loadimage.jpg"; // Establecer la imagen de carga predeterminada
+                    }
+
+                    if (!uniqueImages.has(imageSrc)) { // Verificar si la imagen es única
                         uniqueImages.add(imageSrc); // Agregar la imagen al conjunto de imágenes únicas
-                        loadedImages++; // Incrementar el contador de imágenes cargadas
+                        images.push(imageSrc); // Agregar la imagen al arreglo
+                        imagesLoaded++; // Incrementar el contador de imágenes cargadas
                     }
                 }
             } catch (error) {
@@ -41,14 +39,57 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        if (loadedImages < maxImagesPerLoad) { // Si no se alcanza el máximo de imágenes por carga, ocultar el botón de cargar más
-            loadMoreButton.style.display = 'none';
-        }
+        renderImages(); // Renderizar las imágenes
     };
 
-    loadMoreButton.addEventListener('click', () => {
-        fetchRandomImages(); // Cargar más imágenes al hacer clic en el botón
-    });
+    const renderImages = () => {
+        imageContainer.innerHTML = ''; // Limpiar el contenedor de imágenes
+    
+        // Iterar sobre las imágenes y crear elementos <img>
+        images.forEach((imageUrl, index) => {
+            const imgElement = document.createElement("img");
+            imgElement.src = imageUrl;
+            imgElement.classList.add('image-item'); // Agregar clase CSS para controlar el tamaño de las imágenes
+    
+            // Si la imagen está en la posición 8, agregar la clase ".big-image"
+            if (index === 7) {
+                imgElement.classList.add('big-image');
+            }
+    
+            imgElement.addEventListener("click", () => {
+                // Al hacer clic en una imagen en las posiciones 7 o 9, mover todas las imágenes
+                if (index === 6 || index === 8) {
+                    moveAllImages(index);
+                }
+            });
+    
+            imageContainer.appendChild(imgElement);
+        });
+    };
+    
+
+    const moveAllImages = (clickedIndex) => {
+        const tempImages = [...images]; // Copiar las imágenes originales
+        const centerIndex = Math.floor(images.length / 2); // Índice central
+    
+        // Si se hace clic en la imagen 9 (derecha)
+        if (clickedIndex === 8) {
+            const lastImage = tempImages.pop(); // Quitar la última imagen
+            tempImages.unshift(lastImage); // Agregarla al principio
+        }
+    
+        // Si se hace clic en la imagen 7 (izquierda)
+        if (clickedIndex === 6) {
+            const firstImage = tempImages.shift(); // Quitar la primera imagen
+            tempImages.push(firstImage); // Agregarla al final
+        }
+    
+        // Actualizar el arreglo de imágenes
+        images = [...tempImages];
+    
+        renderImages(); // Renderizar las imágenes actualizadas
+    };
+    
 
     fetchRandomImages(); // Iniciar la obtención de imágenes al cargar la página
 });

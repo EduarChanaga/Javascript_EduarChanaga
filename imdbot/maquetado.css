@@ -74,24 +74,29 @@ body {
 }
 
 #imagen-container {
+    height: 16vi;
     display: flex;  
     gap: 10px;
-    margin-top: 30vi;
+    margin-top: 25vi;
     padding: 10px; /* Añadir espacio para el scroll */
     overflow-x: hidden; /* Ocultar el desplazamiento horizontal */
     overflow-y: auto; /* Permitir el desplazamiento vertical si es necesario */
     white-space: nowrap; /* Evitar que los elementos se rompan en varias líneas */
+
+    align-items:center; /* Alinear el contenido en la parte inferior */
 }
 
 
 #imagen-container img {
-    width: 120px;
-    height: 180px;
+    width: 6vi;
+    height: 9vi;
     object-fit: cover;
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
+    border: 2px solid #bababa; /* Agregar borde blanco de 2px */
 }
+
 
 
 
@@ -154,13 +159,12 @@ body {
 .big-image {
     max-width: 100%;
     width: 15vi;
-    
-    border-image: 0px 0px 5px rgba(0, 0, 0, 0.5); 
+    border: 2px solid #b4b4b4; /* Borde blanco de 2px */
     transform: scale(1.4);
-    padding-left: 1.2vi;
-    padding-right: 1.2vi;
-    margin-top: -2vi;
+    padding: 0vi; /* Eliminar el padding */
+    margin: 0; /* Eliminar el margin */
 }
+
 
 .medium-image {
     width: 150px; 
@@ -173,3 +177,13 @@ body {
     height: 200px; /* Alto deseado */
     object-fit: cover; /* Ajustar la imagen dentro del contenedor */
 }
+
+#banner {
+    position: relative;
+    height: 100%; /* Altura ajustable según tu diseño */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* Evita la repetición de la imagen de fondo */
+}
+
+

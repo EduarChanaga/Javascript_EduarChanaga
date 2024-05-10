@@ -78,18 +78,18 @@ body {
 
 #imagen-container {
     height: 30.3vi;
-    display: flex;  
+    display: flex;
     gap: 10px;
     margin-top: 15vi;
     padding: 10px; /* Añadir espacio para el scroll */
     overflow-x: hidden; /* Ocultar el desplazamiento horizontal */
     overflow-y: auto; /* Permitir el desplazamiento vertical si es necesario */
     white-space: nowrap; /* Evitar que los elementos se rompan en varias líneas */
- 
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.5); /* Agregar sombra al contenedor */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)); /* Fondo con degradado */
 }
 
-
-#imagen-container img {
+.image-container img {
     width: 6vi;
     height: 9vi;
     object-fit: cover;
@@ -97,8 +97,9 @@ body {
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
     border: 2px solid #bababa; /* Agregar borde blanco de 2px */
-    
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2); /* Agregar sombra a las imágenes */
 }
+
 
 .image-container {
     width: 100%;
@@ -110,13 +111,14 @@ body {
 
 
 
-
 #fondo {
     position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)); /* Gradiente de claro a oscuro */
 }
+
 
 /* Cambio de color de la página */
 .switch {
@@ -176,10 +178,24 @@ body {
 }
 
 
+
 .image-item {
+    object-fit: cover;
     margin-top: 14vi;
-    height: 10vi; /* Alto deseado */
-    object-fit: cover; /* Ajustar la imagen dentro del contenedor */
+    height: 10vi;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 5px; /* Si es necesario */
+    cursor: pointer; /* Si se desea un cursor interactivo */
+    transition: transform 0.2s ease-in-out; /* Si se desea una transición al interactuar */
+}
+
+/* Estilos específicos para imágenes de fondo */
+.background-image {
+    position: relative; /* Asegura que el z-index funcione correctamente */
+    z-index: 1; /* Ajusta el orden z para que esté encima de la imagen */
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 1); /* Ejemplo de sombra */
 }
 .big-image {
     margin-top: 8vi;
@@ -187,8 +203,9 @@ body {
     width: 15vi;
     border: 2px solid #b4b4b4; /* Borde blanco de 2px */
     transform: scale(2.4);
-    margin-left: 5vi; /* Eliminar el margin */
-    margin-right: 5vi; /* Eliminar el margin */
+    margin-left: 5vi;
+    margin-right: 5vi; 
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url('ruta/de/imagen.jpg');
 }
 #banner {
     position: relative;
@@ -203,15 +220,51 @@ body {
 .above-image {
     position: absolute;
     margin-top: 2vi;
-    width: 13vi;
+    width: 14vi;
     height: 20vi;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: end;
     align-items: center;
     margin-left: 48vi;
-    z-index: 1; /* Colocar encima de la imagen */
+    z-index: 1;
     padding: 10px;
-    font-size: 18px;
-    color: #ff0000;
+    font-size: 0.9vi;
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 0px 10px 10px rgba(1, 1, 1, 1); 
+    overflow-y: auto;
+    overflow-x:hidden;
+    border-radius: 5px;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)); /* Gradiente de claro a oscuro */
 }
 
+
+.above-image p {
+    margin: 0; /* Eliminar el margen predeterminado del párrafo */
+    max-height: 80%; /* Limitar la altura máxima del texto */
+    white-space: pre-wrap; /* Permitir saltos de línea */
+    overflow-wrap: break-word; /* Dividir el texto en palabras y ajustar automáticamente */
+}
+
+
+.above-image p::after {
+    content: '\00a0'; /* Agregar un espacio al final del texto usando el pseudoelemento ::after */
+}
+
+
+button.red-button {
+    margin-top: 10px; /* Espacio arriba del botón */
+    padding: 8px 16px; /* Espaciado interno del botón */
+    background-color: rgb(207, 0, 0); /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none; /* Quitar borde del botón */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor tipo puntero al pasar el mouse */
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+button.red-button:hover {
+    background-color: darkred; /* Cambiar color de fondo al pasar el mouse */
+}

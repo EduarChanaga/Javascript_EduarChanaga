@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
         const randomLetter2 = alphabet[Math.floor(Math.random() * alphabet.length)]; // Letra aleatoria del alfabeto
         const randomVowel = vowels[Math.floor(Math.random() * vowels.length)]; // Vocal aleatoria
-        return randomLetter + randomVowel + randomLetter2; // Combinación de letra, vocal y letra
+        return randomLetter + randomVowel ; // Combinación de letra, vocal y letra
     };
 
     const fetchRandomImages = async () => {
@@ -75,7 +75,21 @@ document.addEventListener("DOMContentLoaded", async () => {
                 imgElement.onload = () => {
                     // Cambiar la imagen de fondo del div "banner" cuando la imagen en la posición 8 haya cargado
                     document.getElementById('banner').style.backgroundImage = `url('${imageUrl}')`;
+            
+                    // Agregar un div encima de la imagen en la posición 8
+                    const divAboveImage = document.createElement('div');
+                    divAboveImage.textContent = 'Este es un div encima de la imagen en la posición 8';
+                    divAboveImage.classList.add('above-image');
+                    imageContainer.appendChild(divAboveImage); // Agregar el div al contenedor de imágenes
                 };
+            }
+            
+
+            // Agregar eventos de clic a las imágenes 7 y 9
+            if (index === 6 || index === 8) {
+                imgElement.addEventListener('click', () => {
+                    moveAllImages(index === 6 ? 'left' : 'right');
+                });
             }
 
             imageContainer.appendChild(imgElement);
@@ -107,10 +121,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Manejar eventos de teclado
     document.addEventListener("keydown", (event) => {
-        if (event.key === 'ArrowLeft') {
-            moveAllImages('left'); // Mover las imágenes a la izquierda al presionar la tecla de flecha izquierda
-        } else if (event.key === 'ArrowRight') {
-            moveAllImages('right'); // Mover las imágenes a la derecha al presionar la tecla de flecha derecha
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            moveAllImages(event.key === 'ArrowLeft' ? 'left' : 'right');
         }
     });
 

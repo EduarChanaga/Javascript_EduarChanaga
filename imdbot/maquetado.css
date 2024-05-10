@@ -12,6 +12,7 @@ body {
     margin: 0%;
     padding: 0%;
     justify-content: center;
+    overflow-x: hidden;
 }
 
 #banner {
@@ -41,6 +42,8 @@ body {
     margin-top: 1.5vi;
     margin-left: 5vi;
 }
+
+
 
 body {
     font-family: Arial, sans-serif;
@@ -74,16 +77,15 @@ body {
 }
 
 #imagen-container {
-    height: 16vi;
+    height: 30.3vi;
     display: flex;  
     gap: 10px;
-    margin-top: 25vi;
+    margin-top: 15vi;
     padding: 10px; /* Añadir espacio para el scroll */
     overflow-x: hidden; /* Ocultar el desplazamiento horizontal */
     overflow-y: auto; /* Permitir el desplazamiento vertical si es necesario */
     white-space: nowrap; /* Evitar que los elementos se rompan en varias líneas */
-
-    align-items:center; /* Alinear el contenido en la parte inferior */
+ 
 }
 
 
@@ -95,7 +97,16 @@ body {
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
     border: 2px solid #bababa; /* Agregar borde blanco de 2px */
+    
 }
+
+.image-container {
+    width: 100%;
+    height: 100%;
+    background-size: cover; /* Ajustar la imagen para cubrir todo el div */
+    background-position:left; /* Centrar la imagen dentro del div */
+}
+
 
 
 
@@ -156,14 +167,7 @@ body {
 
 
 
-.big-image {
-    max-width: 100%;
-    width: 15vi;
-    border: 2px solid #b4b4b4; /* Borde blanco de 2px */
-    transform: scale(1.4);
-    padding: 0vi; /* Eliminar el padding */
-    margin: 0; /* Eliminar el margin */
-}
+
 
 
 .medium-image {
@@ -173,11 +177,19 @@ body {
 
 
 .image-item {
-    width: 150px; /* Ancho deseado */
-    height: 200px; /* Alto deseado */
+    margin-top: 14vi;
+    height: 10vi; /* Alto deseado */
     object-fit: cover; /* Ajustar la imagen dentro del contenedor */
 }
-
+.big-image {
+    margin-top: 8vi;
+    max-width: 100%;
+    width: 15vi;
+    border: 2px solid #b4b4b4; /* Borde blanco de 2px */
+    transform: scale(2.4);
+    margin-left: 5vi; /* Eliminar el margin */
+    margin-right: 5vi; /* Eliminar el margin */
+}
 #banner {
     position: relative;
     height: 100%; /* Altura ajustable según tu diseño */
@@ -186,4 +198,20 @@ body {
     background-repeat: no-repeat; /* Evita la repetición de la imagen de fondo */
 }
 
+
+
+.above-image {
+    position: absolute;
+    margin-top: 2vi;
+    width: 13vi;
+    height: 20vi;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 48vi;
+    z-index: 1; /* Colocar encima de la imagen */
+    padding: 10px;
+    font-size: 18px;
+    color: #ff0000;
+}
 

@@ -199,9 +199,9 @@ body {
 }
 .big-image {
     margin-top: 8vi;
-    max-width: 100%;
     width: 15vi;
-    border: 2px solid #b4b4b4; /* Borde blanco de 2px */
+    height: 1vi;
+    border: 10px solid #b4b4b4; /* Borde blanco de 2px */
     transform: scale(2.4);
     margin-left: 5vi;
     margin-right: 5vi; 

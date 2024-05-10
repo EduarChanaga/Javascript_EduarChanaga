@@ -33,6 +33,7 @@ body {
 #perfil_icon {
     width: 2vi;
     margin-left: 2.5vi;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4); /* Agregar sombra negra */
 }
 
 #logo {
@@ -142,6 +143,7 @@ body {
     background: #c6c6c6;
     border-radius: 50px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Agregar sombra negra */
 }
 
 .slider:before {
@@ -155,7 +157,7 @@ body {
     inset: 0;
     background-color: white;
     border-radius: 50px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Agregar sombra negra */
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -183,30 +185,32 @@ body {
     object-fit: cover;
     margin-top: 14vi;
     height: 10vi;
+    width: 5vi;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 5px; /* Si es necesario */
     cursor: pointer; /* Si se desea un cursor interactivo */
-    transition: transform 0.2s ease-in-out; /* Si se desea una transición al interactuar */
+
 }
 
 /* Estilos específicos para imágenes de fondo */
 .background-image {
     position: relative; /* Asegura que el z-index funcione correctamente */
     z-index: 1; /* Ajusta el orden z para que esté encima de la imagen */
-    box-shadow: 0px 8px 10px rgba(0, 0, 0, 1); /* Ejemplo de sombra */
+    box-shadow: 0px 8px 100px rgba(0, 0, 0, 1); /* Ejemplo de sombra */
 }
 .big-image {
-    margin-top: 8vi;
     width: 15vi;
-    height: 1vi;
-    border: 10px solid #b4b4b4; /* Borde blanco de 2px */
+    height: 10vi; /* Cambiar el tamaño de acuerdo a tus necesidades */
+    margin-top: 8vi;
+    border: 10px solid #b4b4b4;
     transform: scale(2.4);
     margin-left: 5vi;
-    margin-right: 5vi; 
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url('ruta/de/imagen.jpg');
+    margin-right: 5vi;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1)), url('ruta/de/imagen.jpg');
 }
+
 #banner {
     position: relative;
     height: 100%; /* Altura ajustable según tu diseño */

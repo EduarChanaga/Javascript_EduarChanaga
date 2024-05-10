@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const imageContainer = document.getElementById("imagen-container");
     const banner = document.getElementById("banner");
-    const maxImagesPerLoad = 20;
+    const maxImagesPerLoad = 16;
     const imageUrlPrefix = 'https://search.imdbot.workers.dev/?q=';
     let images = []; // Array para almacenar las imágenes y sus nombres
 

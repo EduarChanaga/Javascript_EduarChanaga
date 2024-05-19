@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
 
     const renderImages = () => {
-        const previousHTML = imageContainer.innerHTML;
         imageContainer.innerHTML = '';
     
         images.forEach((imageData, index) => {
@@ -60,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (index === 7) {
                 imgElement.classList.add('big-image');
                 imgElement.onload = () => {
-                    document.getElementById('banner').style.backgroundImage = `url('${imageData.url}')`;
+                    banner.style.backgroundImage = `url('${imageData.url}')`;
                     const divAboveImage = document.createElement('div');
                     divAboveImage.classList.add('above-image');
     
@@ -71,7 +70,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     
                     // Agregar el botón rojo debajo del nombre de la película
                     const redButton = document.createElement('button');
-                    redButton.textContent = 'Book Now';
+                    redButton.textContent = 'Abrir ventana';
                     redButton.classList.add('red-button');
                     divAboveImage.appendChild(redButton); // Agregar el botón al div
     
@@ -87,11 +86,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     
             imageContainer.appendChild(imgElement);
         });
-    
-        const newHTML = imageContainer.innerHTML;
-        if (previousHTML === newHTML) {
-            imageContainer.innerHTML = previousHTML;
-        }
     };
 
     const moveAllImages = (direction) => {
@@ -117,4 +111,35 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     fetchRandomImages();
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const popupWindow = document.getElementById('popup-window');
+
+    // Listener para el botón dentro del div número 8
+    document.querySelector('#imagen-container').addEventListener('click', function(event) {
+        if (event.target && event.target.classList.contains('red-button') && event.target.textContent === 'Abrir ventana') {
+            const imageElement = document.querySelector('#imagen-container .big-image');
+            const imageUrl = imageElement.src;
+            document.getElementById('left-side').style.backgroundImage = `url('${imageUrl}')`;
+            updateTimeLeft();
+            popupWindow.classList.remove('hidden');
+            popupWindow.style.display = 'flex';
+        }
+    });
+
+    // Listener para cerrar la ventana emergente al hacer clic fuera de popup-content
+    popupWindow.addEventListener('click', function(event) {
+        if (event.target === popupWindow) {
+            popupWindow.classList.add('hidden');
+            popupWindow.style.display = 'none';
+        }
+    });
+
+    function updateTimeLeft() {
+        const timeLeftElement = document.getElementById('time-left');
+        const now = new Date();
+        const timeLeft = `Time left to purchase: ${now.toLocaleTimeString()}`;
+        timeLeftElement.textContent = timeLeft;
+    }
 });

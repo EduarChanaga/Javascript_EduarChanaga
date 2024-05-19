@@ -8,12 +8,9 @@
 </head>
 <body>
     <div id="banner">
-        
-
         <div id="logo">
             <img src="https://nizami-movie-center.vercel.app/nizami.svg" style="height: 3vi;">
         </div>
-
         <div id="botones">
             <label class="switch">
                 <input type="checkbox">
@@ -21,19 +18,23 @@
             </label>
             <a href=""><img id="perfil_icon" src="./storage/perfil.svg"></a>
         </div>
-
         <div id="imagen-container" class="image-container">
-            
-           
+            <!-- Aquí se agregarán las imágenes y el div de la imagen 8 con el botón "Abrir ventana" -->
         </div>
-
-        
-        
     </div>
-
-    
-
-    
+    <div id="popup-window" class="hidden">
+        <div id="popup-content">
+            <div id="left-side" class="popup-side">
+                <div id="overlay">
+                    <div id="centered-div">
+                        <button class="red-button">Purchase</button>
+                        <p id="time-left"></p>
+                    </div>
+                </div>
+            </div>
+            <div id="right-side" class="popup-side"></div>
+        </div>
+    </div>
     <script src="./script.js"></script>
 </body>
 </html>

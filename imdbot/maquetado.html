@@ -26,13 +26,36 @@
         <div id="popup-content">
             <div id="left-side" class="popup-side">
                 <div id="overlay">
+                   
                     <div id="centered-div">
-                        <button class="red-button">Purchase</button>
+                        <h2>SELECTED SEATS </h2>
+                        <div id="Fecha_seleccionada"></div>
+                        <div id="Horario_seleccionado"></div>
+                        <div id="Asientos_seleccionados"></div>
+                        <button onclick="getSelectedSeats()">Purchase ($0)</button>
                         <p id="time-left"></p>
                     </div>
                 </div>
             </div>
-            <div id="right-side" class="popup-side"></div>
+            <div id="right-side" class="popup-side">
+                <center>
+                <div class="containerasientos"> 
+                    <h1 id="absolute" style="color: white;">Date</h1>
+                    <div id="date-buttons-container"></div>
+                    <br><hr><br>
+                    <h1 id="absolute" style="color: white;">Time</h1>
+                    <div id="horario-buttons-container">
+                        <button class="horario-button">13:15</button>
+                        <button class="horario-button">15:15</button>
+                        <button class="horario-button">18:15</button>
+                        <button class="horario-button">20:30</button>
+                        <button class="horario-button">22:30</button>
+                    </div>
+                    <br><hr><br>
+                    <div id="seating-chart" class="seating-chart"></div>
+                  </div>
+                </center>
+            </div>
         </div>
     </div>
     <script src="./script.js"></script>

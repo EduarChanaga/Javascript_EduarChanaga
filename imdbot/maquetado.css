@@ -33,7 +33,6 @@ body {
 #perfil_icon {
     width: 2vi;
     margin-left: 2.5vi;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4); /* Agregar sombra negra */
 } 
 
 #logo {
@@ -123,7 +122,7 @@ body {
 
 /* Cambio de color de la página */
 .switch {
-    font-size: 17px;
+    font-size: 1vi;
     position: relative;
     display: inline-block;
     width: 3.5em;
@@ -230,7 +229,7 @@ body {
     flex-direction: column;
     justify-content: end;
     align-items: center;
-    margin-left: 48vi;
+    margin-left: 48vw;
     z-index: 1;
     padding: 10px;
     font-size: 0.9vi;
@@ -259,7 +258,7 @@ body {
 
 
 button.red-button {
-    margin-top: 10px; /* Espacio arriba del botón */
+    font-size: 0.8vi;
     padding: 8px 16px; /* Espaciado interno del botón */
     background-color: rgb(207, 0, 0); /* Color de fondo del botón */
     color: white; /* Color del texto del botón */
@@ -320,6 +319,10 @@ button.red-button:hover {
 }
 
 #right-side {
+    position: relative;
+    display:inline;
+    overflow-y: auto;
+    justify-content: center;
     background: black;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -362,3 +365,101 @@ button.red-button:hover {
     display: none;
 }
 
+
+
+  .seating-chart {
+    width: 25vi;
+    height: 1vi;
+
+  }
+
+  
+
+
+
+  
+
+  
+  .row-labels {
+    display: flex;
+ 
+  }
+  
+  .row-label {
+    width: 1vi;
+    height: 1vi;
+    margin: 1vi;
+  }
+  
+  .seating-table {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1vi; /* Ajuste para alinear los asientos con las letras */
+  }
+  
+  .seat-row {
+    display: flex;
+  }
+  
+  .seat {
+    width: 1.5vi;
+    height: 1.5vi;
+    margin: 0.2vi;
+    background-color: #393939;
+    border-radius: 50%; /* Hacer que el asiento sea un círcul */
+    cursor: pointer;
+  }
+  
+  .selected {
+    background-color: #ff0000;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #8D090D;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+
+
+  #date-buttons-container {
+    width: 25vi;
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+
+}
+
+.date-button {
+    padding: 0.4vi;
+    font-size: 0.6vi;
+    cursor: pointer;
+    border: none;
+    background-color: #2B2B2B;
+    color: white;
+    border-radius: 1vi;
+    transition: background-color 0.3s;
+}
+
+.date-button:hover {
+    background-color: #4d4d4d;
+}
+ #absolute{
+    font-size: 1vi
+    ;
+ }
+
+ .horario-button{
+    border-radius: 2vi;
+    background-color: #2B2B2B;
+ }
+
+ .horario-button:hover{
+    border-radius: 2vi;
+    background-color: #616161;
+ }

@@ -1,4 +1,13 @@
 document.addEventListener("DOMContentLoaded", async () => {
+    const horarioButtons = document.querySelectorAll('.horario-button');
+
+    horarioButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const selectedHorario = this.textContent;
+            const selectedHorarioElement = document.getElementById('Horario_seleccionado');
+            selectedHorarioElement.textContent = `Selected Time: ${selectedHorario}`;
+        });
+    });
     const imageContainer = document.getElementById("imagen-container");
     const banner = document.getElementById("banner");
     const maxImagesPerLoad = 16;
@@ -70,7 +79,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     
                     // Agregar el botón rojo debajo del nombre de la película
                     const redButton = document.createElement('button');
-                    redButton.textContent = 'Abrir ventana';
+                    redButton.textContent = 'Book Now';
                     redButton.classList.add('red-button');
                     divAboveImage.appendChild(redButton); // Agregar el botón al div
     
@@ -87,7 +96,50 @@ document.addEventListener("DOMContentLoaded", async () => {
             imageContainer.appendChild(imgElement);
         });
     };
+    
+     // Función para obtener los próximos 5 días
+     function getNext5Days() {
+        const dates = [];
+        const today = new Date();
 
+        for (let i = 0; i < 7; i++) {
+            const date = new Date();
+            date.setDate(today.getDate() + i);
+            dates.push(date);
+        }
+
+        return dates;
+    }
+
+    // Función para formatear la fecha
+    function formatDate(date) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString('es-ES', options);
+    }
+
+    // Función para crear y llenar los botones de fecha
+    function createDateButtons() {
+        const dateButtonsContainer = document.getElementById('date-buttons-container');
+        const dates = getNext5Days();
+    
+        dates.forEach(date => {
+            const button = document.createElement('button');
+            button.value = date.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+            button.textContent = formatDate(date);
+            button.classList.add('date-button');
+            dateButtonsContainer.appendChild(button);
+    
+            // Agregar evento de clic a cada botón de fecha
+            button.addEventListener('click', function() {
+                const selectedDate = this.value;
+                const selectedDateElement = document.getElementById('Fecha_seleccionada');
+                selectedDateElement.textContent = `Selected Date: ${selectedDate}`;
+            });
+        });
+    }
+    
+    // Crear y llenar los botones de fecha al cargar la página
+    createDateButtons();
     const moveAllImages = (direction) => {
         const tempImages = [...images];
 
@@ -118,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Listener para el botón dentro del div número 8
     document.querySelector('#imagen-container').addEventListener('click', function(event) {
-        if (event.target && event.target.classList.contains('red-button') && event.target.textContent === 'Abrir ventana') {
+        if (event.target && event.target.classList.contains('red-button') && event.target.textContent === 'Book Now') {
             const imageElement = document.querySelector('#imagen-container .big-image');
             const imageUrl = imageElement.src;
             document.getElementById('left-side').style.backgroundImage = `url('${imageUrl}')`;
@@ -143,3 +195,86 @@ document.addEventListener("DOMContentLoaded", function() {
         timeLeftElement.textContent = timeLeft;
     }
 });
+
+const seatingChart = document.getElementById('seating-chart');
+
+function createSeatingChart(rows, cols) {
+  const alphabet = 'GFEDCBA';
+  const chartWrapper = document.createElement('div');
+  chartWrapper.className = 'chart-wrapper';
+
+  const rowLabelsWrapper = document.createElement('div');
+  rowLabelsWrapper.className = 'row-labels';
+  for (let i = rows - 1; i >= 0; i--) {
+    const rowLabel = document.createElement('div');
+    rowLabel.className = 'row-label';
+    rowLabelsWrapper.appendChild(rowLabel);
+  }
+  chartWrapper.appendChild(rowLabelsWrapper);
+
+  const seatingTable = document.createElement('div');
+  seatingTable.className = 'seating-table';
+
+  for (let i = 0; i < rows; i++) {
+    const seatRow = document.createElement('div');
+    seatRow.className = 'seat-row';
+    for (let j = 0; j < cols; j++) {
+      const seat = document.createElement('div');
+      seat.className = 'seat';
+      seat.dataset.row = alphabet.charAt(i);
+      seat.dataset.col = j + 1;
+      seat.addEventListener('click', toggleSeat);
+      
+      // Ocultar asientos específicos
+      if (
+        (i === 0 && (j === 0 || j === 1 || j === 2|| j === 9 || j === 10 || j === 11)) ||
+        (i === 1 && (j === 0 || j === 1 || j === 10 || j === 11)) ||
+        (i === 2 && (j === 0 || j === 11))
+      ) {
+        seat.style.visibility = 'hidden';
+      }
+      seatRow.appendChild(seat);
+    }
+    seatingTable.appendChild(seatRow);
+  }
+
+  chartWrapper.appendChild(seatingTable);
+  seatingChart.appendChild(chartWrapper);
+}
+
+function toggleSeat() {
+    this.classList.toggle('selected');
+    updateSelectedSeats(); // Llamar a la función para actualizar la lista de asientos seleccionados
+}
+
+function updateSelectedSeats() {
+    const selectedSeatsDiv = document.getElementById('Asientos_seleccionados');
+    selectedSeatsDiv.innerHTML = ''; // Limpiar contenido actual
+
+    const selectedSeats = document.querySelectorAll('.seat.selected');
+    let totalPrice = 0;
+
+    selectedSeats.forEach(seat => {
+        const seatInfo = document.createElement('div');
+        seatInfo.textContent = `Row: ${seat.dataset.row}, seat: ${seat.dataset.col} - $24`;
+        selectedSeatsDiv.appendChild(seatInfo);
+        totalPrice += 24;
+    });
+
+    // Actualizar el texto del botón de compra con el precio total
+    const purchaseButton = document.querySelector('button[onclick="getSelectedSeats()"]');
+    purchaseButton.textContent = `Purchase ($${totalPrice})`;
+}
+
+function getSelectedSeats() {
+    const selectedSeats = document.querySelectorAll('.selected');
+    const seatsArray = Array.from(selectedSeats).map(seat => {
+        return {
+            row: seat.dataset.row,
+            col: seat.dataset.col
+        };
+    });
+    alert(`Asientos seleccionados: ${JSON.stringify(seatsArray)}`);
+}
+
+createSeatingChart(7, 12);

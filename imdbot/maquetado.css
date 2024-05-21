@@ -1,6 +1,5 @@
 html {
-    display: flex;
-    justify-content: center;
+
     width: 100%;
     margin: 0%;
     padding: 0%;
@@ -11,7 +10,6 @@ body {
     width: 100%;
     margin: 0%;
     padding: 0%;
-    justify-content: center;
     overflow-x: hidden;
 }
 
@@ -551,7 +549,45 @@ button.purchase {
   
 
 
-  #Section2{
-    background-color: red;
+  #container2{
+    margin: 1vi;
+    position: absolute;
     width: 100%;
+    margin-top: 51%;
+  
   }
+
+
+  #Currently_playing {
+    display: flex;
+    flex-wrap: wrap;
+}
+.movie-div {
+    background-size: cover;
+    background-position: center;
+    width: 200px;
+    height: 300px;
+    margin: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    position: relative;
+}
+.movie-title {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    text-align: center;
+}
+.movie-button {
+    background-color: rgb(197, 0, 0);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    align-self: center;
+    margin-top: auto;
+}

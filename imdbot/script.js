@@ -8,11 +8,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             selectedHorarioElement.textContent = `Selected Time: ${selectedHorario}`;
         });
     });
+
     const imageContainer = document.getElementById("imagen-container");
     const banner = document.getElementById("banner");
     const maxImagesPerLoad = 16;
     const imageUrlPrefix = 'https://search.imdbot.workers.dev/?q=';
-    let images = []; // Array para almacenar las imágenes y sus nombres
+    let images = [];
 
     const generateRandomQuery = () => {
         const alphabet = 'abcdefghijklmnopqrstuvwxyz';
@@ -45,7 +46,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                     if (!uniqueImages.has(imageSrc)) {
                         uniqueImages.add(imageSrc);
-                        images.push({ url: imageSrc, name: data.description[randomIndex]["#TITLE"] }); // Almacenar el enlace y el nombre
+                        images.push({ url: imageSrc, name: data.description[randomIndex]["#TITLE"] });
                         imagesLoaded++;
                     }
                 }
@@ -72,16 +73,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                     const divAboveImage = document.createElement('div');
                     divAboveImage.classList.add('above-image');
     
-                    // Agregar el nombre de la película
                     const nameElement = document.createElement('div');
-                    nameElement.textContent = imageData.name; // Mostrar el nombre de la película
-                    divAboveImage.appendChild(nameElement); // Agregar el nombre al div
+                    nameElement.textContent = imageData.name;
+                    divAboveImage.appendChild(nameElement);
     
-                    // Agregar el botón rojo debajo del nombre de la película
                     const redButton = document.createElement('button');
                     redButton.textContent = 'Book Now';
                     redButton.classList.add('red-button');
-                    divAboveImage.appendChild(redButton); // Agregar el botón al div
+                    divAboveImage.appendChild(redButton);
     
                     imageContainer.appendChild(divAboveImage);
                 };
@@ -97,8 +96,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     };
     
-     // Función para obtener los próximos 5 días
-     function getNext5Days() {
+    function getNext5Days() {
         const dates = [];
         const today = new Date();
 
@@ -111,25 +109,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         return dates;
     }
 
-    // Función para formatear la fecha
     function formatDate(date) {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return date.toLocaleDateString('es-ES', options);
     }
 
-    // Función para crear y llenar los botones de fecha
     function createDateButtons() {
         const dateButtonsContainer = document.getElementById('date-buttons-container');
         const dates = getNext5Days();
     
         dates.forEach(date => {
             const button = document.createElement('button');
-            button.value = date.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+            button.value = date.toISOString().split('T')[0];
             button.textContent = formatDate(date);
             button.classList.add('date-button');
             dateButtonsContainer.appendChild(button);
     
-            // Agregar evento de clic a cada botón de fecha
             button.addEventListener('click', function() {
                 const selectedDate = this.value;
                 const selectedDateElement = document.getElementById('Fecha_seleccionada');
@@ -138,7 +133,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
     
-    // Crear y llenar los botones de fecha al cargar la página
     createDateButtons();
     const moveAllImages = (direction) => {
         const tempImages = [...images];
@@ -168,7 +162,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 document.addEventListener("DOMContentLoaded", function() {
     const popupWindow = document.getElementById('popup-window');
 
-    // Listener para el botón dentro del div número 8
     document.querySelector('#imagen-container').addEventListener('click', function(event) {
         if (event.target && event.target.classList.contains('red-button') && event.target.textContent === 'Book Now') {
             const imageElement = document.querySelector('#imagen-container .big-image');
@@ -180,7 +173,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Listener para cerrar la ventana emergente al hacer clic fuera de popup-content
     popupWindow.addEventListener('click', function(event) {
         if (event.target === popupWindow) {
             popupWindow.classList.add('hidden');
@@ -199,57 +191,56 @@ document.addEventListener("DOMContentLoaded", function() {
 const seatingChart = document.getElementById('seating-chart');
 
 function createSeatingChart(rows, cols) {
-  const alphabet = 'GFEDCBA';
-  const chartWrapper = document.createElement('div');
-  chartWrapper.className = 'chart-wrapper';
+    const alphabet = 'GFEDCBA';
+    const chartWrapper = document.createElement('div');
+    chartWrapper.className = 'chart-wrapper';
 
-  const rowLabelsWrapper = document.createElement('div');
-  rowLabelsWrapper.className = 'row-labels';
-  for (let i = rows - 1; i >= 0; i--) {
-    const rowLabel = document.createElement('div');
-    rowLabel.className = 'row-label';
-    rowLabelsWrapper.appendChild(rowLabel);
-  }
-  chartWrapper.appendChild(rowLabelsWrapper);
-
-  const seatingTable = document.createElement('div');
-  seatingTable.className = 'seating-table';
-
-  for (let i = 0; i < rows; i++) {
-    const seatRow = document.createElement('div');
-    seatRow.className = 'seat-row';
-    for (let j = 0; j < cols; j++) {
-      const seat = document.createElement('div');
-      seat.className = 'seat';
-      seat.dataset.row = alphabet.charAt(i);
-      seat.dataset.col = j + 1;
-      seat.addEventListener('click', toggleSeat);
-      
-      // Ocultar asientos específicos
-      if (
-        (i === 0 && (j === 0 || j === 1 || j === 2|| j === 9 || j === 10 || j === 11)) ||
-        (i === 1 && (j === 0 || j === 1 || j === 10 || j === 11)) ||
-        (i === 2 && (j === 0 || j === 11))
-      ) {
-        seat.style.visibility = 'hidden';
-      }
-      seatRow.appendChild(seat);
+    const rowLabelsWrapper = document.createElement('div');
+    rowLabelsWrapper.className = 'row-labels';
+    for (let i = rows - 1; i >= 0; i--) {
+        const rowLabel = document.createElement('div');
+        rowLabel.className = 'row-label';
+        rowLabelsWrapper.appendChild(rowLabel);
     }
-    seatingTable.appendChild(seatRow);
-  }
+    chartWrapper.appendChild(rowLabelsWrapper);
 
-  chartWrapper.appendChild(seatingTable);
-  seatingChart.appendChild(chartWrapper);
+    const seatingTable = document.createElement('div');
+    seatingTable.className = 'seating-table';
+
+    for (let i = 0; i < rows; i++) {
+        const seatRow = document.createElement('div');
+        seatRow.className = 'seat-row';
+        for (let j = 0; j < cols; j++) {
+            const seat = document.createElement('div');
+            seat.className = 'seat';
+            seat.dataset.row = alphabet.charAt(i);
+            seat.dataset.col = j + 1;
+            seat.addEventListener('click', toggleSeat);
+            
+            if (
+                (i === 0 && (j === 0 || j === 1 || j === 2 || j === 9 || j === 10 || j === 11)) ||
+                (i === 1 && (j === 0 || j === 1 || j === 10 || j === 11)) ||
+                (i === 2 && (j === 0 || j === 11))
+            ) {
+                seat.style.visibility = 'hidden';
+            }
+            seatRow.appendChild(seat);
+        }
+        seatingTable.appendChild(seatRow);
+    }
+
+    chartWrapper.appendChild(seatingTable);
+    seatingChart.appendChild(chartWrapper);
 }
 
 function toggleSeat() {
     this.classList.toggle('selected');
-    updateSelectedSeats(); // Llamar a la función para actualizar la lista de asientos seleccionados
+    updateSelectedSeats();
 }
 
 function updateSelectedSeats() {
     const selectedSeatsDiv = document.getElementById('Asientos_seleccionados');
-    selectedSeatsDiv.innerHTML = ''; // Limpiar contenido actual
+    selectedSeatsDiv.innerHTML = '';
 
     const selectedSeats = document.querySelectorAll('.seat.selected');
     let totalPrice = 0;
@@ -261,7 +252,6 @@ function updateSelectedSeats() {
         totalPrice += 24;
     });
 
-    // Actualizar el texto del botón de compra con el precio total
     const purchaseButton = document.querySelector('button[onclick="showPopupWindow2()"]');
     purchaseButton.textContent = `Purchase ($${totalPrice})`;
 
@@ -282,12 +272,10 @@ function getSelectedSeats() {
 
 createSeatingChart(7, 12);
 
-
 function showPopupWindow2() {
     var popupWindow2 = document.getElementById("popup-window2");
     popupWindow2.style.display = "block";
 }
-
 
 document.addEventListener("keydown", function(event) {
     if (event.key === "Escape") {
@@ -295,4 +283,67 @@ document.addEventListener("keydown", function(event) {
         popupWindow2.style.display = "none";
     }
 });
+
+function updateTimeLeft() {
+    const timeLeftElement = document.getElementById('time-left');
+    const now = new Date();
+    const timeLeft = `Time left to purchase: ${now.toLocaleTimeString()}`;
+    timeLeftElement.textContent = timeLeft;
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const popupWindow = document.getElementById('popup-window');
+
+    popupWindow.addEventListener('click', function(event) {
+        if (event.target === popupWindow) {
+            popupWindow.classList.add('hidden');
+            popupWindow.style.display = 'none';
+        }
+    });
+});
+
+async function fetchMovies() {
+    console.log('Fetching movies...');
+    const response = await fetch('https://search.imdbot.workers.dev/?q=');
+    const data = await response.json();
+
+    if (!data.description || !Array.isArray(data.description)) {
+        throw new Error("Unexpected API response format");
+    }
+
+    console.log('Movies fetched successfully!');
+    const movies = data.description;
+
+    const sortedMovies = movies.sort((a, b) => b["#YEAR"] - a["#YEAR"]);
+    const recentMovies = sortedMovies.slice(0, 7);
+
+    const currentlyPlayingDiv = document.getElementById('Currently_playing');
+
+    recentMovies.forEach(movie => {
+        const movieDiv = document.createElement('div');
+        movieDiv.className = 'movie-div';
+        movieDiv.style.backgroundImage = `url(${movie["#IMG_POSTER"]})`;
+
+        const movieTitle = document.createElement('div');
+        movieTitle.className = 'movie-title';
+        movieTitle.textContent = movie["#TITLE"];
+
+        const movieButton = document.createElement('button');
+        movieButton.className = 'movie-button';
+        movieButton.textContent = 'Book Now';
+        movieButton.onclick = () => {
+            const imageUrl = movie["#IMG_POSTER"];
+            document.getElementById('left-side').style.backgroundImage = `url('${imageUrl}')`;
+            updateTimeLeft();
+            popupWindow.classList.remove('hidden');
+            popupWindow.style.display = 'flex';
+        };
+
+        movieDiv.appendChild(movieTitle);
+        movieDiv.appendChild(movieButton);
+        currentlyPlayingDiv.appendChild(movieDiv);
+    });
+}
+
+fetchMovies().catch(error => console.error(error));
 

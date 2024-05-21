@@ -463,3 +463,89 @@ button.red-button:hover {
     border-radius: 2vi;
     background-color: #616161;
  }
+
+
+
+
+
+ #popup-window2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001; /* Asegurarse de que esté por encima de todo */
+    display: none;
+}
+
+#popup-content2 {
+    margin: 5% 10vi;
+    background: white;
+    width: 40%;
+    height: 80%;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    overflow-y:scroll ;
+}
+
+#popup-content2 h1 {
+    padding: 0vi 18vi;
+}
+
+
+
+
+form {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 0.8vi;
+}
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.card-input {
+    display: flex;
+    align-items: center;
+}
+.card-input svg {
+    margin-right: 10px;
+}
+.checkbox-container {
+    display:grid;
+}
+.checkbox-container input {
+    margin-right: 10px;
+}
+
+input#remember {
+    margin-left: -38vi;
+    position: absolute;
+}
+
+
+button.purchase {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #8D090D;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 0vi 8vi;
+  }
+  

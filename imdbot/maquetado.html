@@ -32,7 +32,7 @@
                         <div id="Fecha_seleccionada"></div>
                         <div id="Horario_seleccionado"></div>
                         <div id="Asientos_seleccionados"></div>
-                        <button onclick="getSelectedSeats()">Purchase ($0)</button>
+                        <button id="purchase-btn" onclick="showPopupWindow2()">Purchase ($0)</button>
                         <p id="time-left"></p>
                     </div>
                 </div>
@@ -57,6 +57,57 @@
                 </center>
             </div>
         </div>
+    </div>
+    <div id="popup-window2" class="hidden">
+        
+        <div id="popup-content2">
+            <br><br><br>
+            <h1>Order</h1>
+            <form>
+                <label for="name">Name and surname</label>
+                <input type="text" id="name" name="name" required>
+        
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+        
+                <label for="phone">Cell.phone</label>
+                <div class="phone-container">
+                    <select id="country-code" name="country-code" required>
+                        <option value="+57">+57</option>
+                        <option value="+1">+1</option>
+                        <option value="+44">+44</option>
+                        <option value="+33">+33</option>
+                        <option value="+91">+91</option>
+                    </select>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+        
+                <label for="payment">Payment</label>
+                <select id="payment" name="payment" required>
+                    <option value="visa">Visa</option>
+                    <option value="mastercard">MasterCard</option>
+                    <option value="amex">American Express</option>
+                    <option value="discover">Discover</option>
+                </select>
+        
+
+                <div class="card-input">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0V4zM0 8v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8H0zm4.5 2.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1h2zm3 0a.5.5 0 0 1 0 1H6.5a.5.5 0 0 1 0-1h1z"/>
+                    </svg>
+                    <input type="text" id="card-number" name="card-number" required>
+                </div>
+        
+                <div class="checkbox-container">
+                    
+                    <label for="remember">Remember card information</label>
+                    <input type="checkbox" id="remember" name="remember">
+                </div><br><br>
+                <button id="purchase" class="purchase" onclick="getSelectedSeats()">Purchase</button>
+            </form>
+        </div>
+        
+       
     </div>
     <script src="./script.js"></script>
 </body>

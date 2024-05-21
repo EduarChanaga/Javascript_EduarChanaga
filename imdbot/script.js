@@ -262,8 +262,11 @@ function updateSelectedSeats() {
     });
 
     // Actualizar el texto del botón de compra con el precio total
-    const purchaseButton = document.querySelector('button[onclick="getSelectedSeats()"]');
+    const purchaseButton = document.querySelector('button[onclick="showPopupWindow2()"]');
     purchaseButton.textContent = `Purchase ($${totalPrice})`;
+
+    const purchaseButton2 = document.getElementById('purchase');
+    purchaseButton2.textContent = `Purchase ($${totalPrice})`;
 }
 
 function getSelectedSeats() {
@@ -278,3 +281,18 @@ function getSelectedSeats() {
 }
 
 createSeatingChart(7, 12);
+
+
+function showPopupWindow2() {
+    var popupWindow2 = document.getElementById("popup-window2");
+    popupWindow2.style.display = "block";
+}
+
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        const popupWindow2 = document.getElementById("popup-window2");
+        popupWindow2.style.display = "none";
+    }
+});
+
